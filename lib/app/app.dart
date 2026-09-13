@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lizziedow/app/routes.dart';
+import 'package:lizziedow/app/routes_name.dart';
+import 'package:lizziedow/app/theme/my_theme.dart';
 
 class LizzieDowApp extends StatelessWidget {
   const LizzieDowApp({super.key});
@@ -8,10 +11,9 @@ class LizzieDowApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LizzieDow',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
+      theme: MyTheme.getThemeData(isLight: true),
+      initialRoute: RoutesName.splashScreen,
+      onGenerateRoute: Routes.generateRoute,
     );
   }
 }

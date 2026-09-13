@@ -1,0 +1,125 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:lizziedow/app/translator/localization_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class MySharedPref {
+  // prevent making instance
+  MySharedPref._();
+
+  // get storage
+  static late SharedPreferences _sharedPreferences;
+  static bool _isInitialized = false; 
+
+  // STORING KEYS 
+  static const String _fcmTokenKey = 'fcm_token'; 
+  static const String _currentLocalKey = 'current_local';
+  static const String _lightThemeKey = 'is_theme_light';
+  static const String _accessToken = 'access_token';
+  static const String _userIdKey = 'user_id';
+  static const String _guestIdKey = 'guest_id';
+  static const String _pendingReferralCodeKey = 'pending_referral_code';
+
+  /// init get storage services 
+  static Future<void> init() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+    _isInitialized = true;
+  }
+
+  static setStorage(SharedPreferences sharedPreferences) {
+    _sharedPreferences = sharedPreferences;
+    _isInitialized = true;
+  }
+
+  /// set theme current type as light theme
+  static Future<void> setTheme(bool lightTheme) =>
+      _sharedPreferences.setBool(_lightThemeKey, lightTheme);
+
+  /// get if the current theme type is light
+  static bool isLightTheme() => !_isInitialized
+      ? true
+      : _sharedPreferences.getBool(_lightThemeKey) ??
+            true; // todo set the default theme (true for light, false for dark)
+
+  /// save current locale
+  static Future<void> setLocale(String languageCode) =>
+      _sharedPreferences.setString(_currentLocalKey, languageCode);
+
+  /// save authorization token
+  static Future<void> setAccessToken(String token) =>
+      _sharedPreferences.setString(_accessToken, token);
+
+  /// save user id
+  static Future<void> setUserId(String userId) =>
+      _sharedPreferences.setString(_userIdKey, userId);
+
+  /// get current locale
+  static Locale getLocale() {
+    if (!_isInitialized) {
+      return LocalizationService.defaultLanguage;
+    }
+
+    String? langCode = _sharedPreferences.getString(_currentLocalKey);
+    return LocalizationService.supportedLanguages[langCode] ??
+        LocalizationService.defaultLanguage;
+  }
+
+  /// save generated fcm token
+  static Future<void> setFcmToken(String token) =>
+      _sharedPreferences.setString(_fcmTokenKey, token);
+
+  /// get saved fcm token
+  static String? getFcmToken() =>
+      _isInitialized ? _sharedPreferences.getString(_fcmTokenKey) : null;
+
+  /// get authorization token
+  static String? getAccessToken() =>
+      _isInitialized ? _sharedPreferences.getString(_accessToken) : null;
+
+  /// get user id
+  static String? getUserId() =>
+      _isInitialized ? _sharedPreferences.getString(_userIdKey) : null;
+
+  static Future<void> setPendingReferralCode(String code) =>
+      _sharedPreferences.setString(_pendingReferralCodeKey, code);
+
+  static String? getPendingReferralCode() => _isInitialized
+      ? _sharedPreferences.getString(_pendingReferralCodeKey)
+      : null;
+
+  static Future<void> clearPendingReferralCode() =>
+      _sharedPreferences.remove(_pendingReferralCodeKey);
+
+  static Future<String> getOrCreateGuestId() async {
+    final savedGuestId = _isInitialized
+        ? _sharedPreferences.getString(_guestIdKey)
+        : null;
+
+    if (savedGuestId != null && savedGuestId.trim().isNotEmpty) {
+      return savedGuestId;
+    }
+
+    final guestId = 'guest_${_generateGuestId()}';
+    await _sharedPreferences.setString(_guestIdKey, guestId);
+    return guestId;
+  }
+
+  /// clear all data from shared pref
+  static Future<void> clear() async => await _sharedPreferences.clear();
+
+  static getgetAccessToken() {}
+
+  static String _generateGuestId() {
+    final random = Random.secure();
+    final bytes = List<int>.generate(16, (_) => random.nextInt(256));
+
+    String hex(int start, int length) => bytes
+        .skip(start)
+        .take(length)
+        .map((byte) => byte.toRadixString(16).padLeft(2, '0'))
+        .join()
+        .toUpperCase();
+
+    return '${hex(0, 4)}-${hex(4, 2)}-${hex(6, 2)}-${hex(8, 2)}-${hex(10, 6)}';
+  }
+}

@@ -1,0 +1,154 @@
+import 'package:crash_safe_image/crash_safe_image.dart';
+import 'package:flutter/material.dart';
+import 'package:lizziedow/app/routes_name.dart';
+import 'package:lizziedow/app/theme/light_theme_colors.dart';
+import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/app/utils/validator_services.dart';
+import 'package:lizziedow/features/auth/view/widgets/custom_text_field.dart';
+import 'package:lizziedow/features/auth/view/widgets/have_account.dart';
+import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
+import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';
+import 'package:lizziedow/features/auth/view/widgets/login_devider.dart';
+import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
+
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _usernameFocus = FocusNode();
+  final _emailFocus = FocusNode();
+  final _passwordFocus = FocusNode();
+
+  @override
+  void dispose() {
+    _usernameFocus.dispose();
+    _emailFocus.dispose();
+    _passwordFocus.dispose();
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _signup() {
+    if (_formKey.currentState?.validate() ?? false) {
+      Navigator.pushNamed(
+        context,
+        RoutesName.verifyEmailScreen,
+        arguments: {
+          'email': _emailController.text.trim(),
+          'nextRoute': RoutesName.setTypeScreen,
+        },
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: LightThemeColors.scaffoldBackgroundColor,
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 22.w(context)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const LoginDesignLayer(
+                          title: 'Create your account',
+                          subtitle: 'Start your journey with us',
+                          titleTopSpacing: 50,
+                        ),
+                        SizedBox(height: 24.h(context)),
+                        const LabelText(label: 'Username'),
+                        SizedBox(height: 6.h(context)),
+                        CustomTextField(
+                          controller: _usernameController,
+                          label: 'Username',
+                          hintText: 'Enter your username',
+                          focusNode: _usernameFocus,
+                          textInputAction: TextInputAction.next,
+                          validator: ValidatorService.validateSimpleField,
+                          onFieldSubmitted: (_) {
+                            _emailFocus.requestFocus();
+                          },
+                        ),
+                        SizedBox(height: 14.h(context)),
+                        const LabelText(label: 'Email'),
+                        SizedBox(height: 6.h(context)),
+                        CustomTextField(
+                          controller: _emailController,
+                          label: 'Email',
+                          hintText: 'Enter your email address',
+                          keyboardType: TextInputType.emailAddress,
+                          focusNode: _emailFocus,
+                          textInputAction: TextInputAction.next,
+                          validator: ValidatorService.validateEmailAddress,
+                          onFieldSubmitted: (_) {
+                            _passwordFocus.requestFocus();
+                          },
+                        ),
+                        SizedBox(height: 14.h(context)),
+                        const LabelText(label: 'Password'),
+                        SizedBox(height: 6.h(context)),
+                        CustomTextField(
+                          controller: _passwordController,
+                          label: 'Password',
+                          hintText: 'Enter your password',
+                          obscureText: true,
+                          focusNode: _passwordFocus,
+                          textInputAction: TextInputAction.done,
+                          validator: ValidatorService.validateSimpleField,
+                          onFieldSubmitted: (_) => _signup(),
+                        ),
+                        SizedBox(height: 24.h(context)),
+                        CustomButton(text: 'Signup', onPressed: _signup),
+                        SizedBox(height: 24.h(context)),
+                        const LoginDivider(),
+                        SizedBox(height: 16.h(context)),
+                        CustomButton(
+                          text: 'Google',
+                          prefixIcon: CrashSafeImage(
+                            Assets.images.google.keyName,
+                            width: 18.w(context),
+                            height: 18.h(context),
+                          ),
+                          onPressed: () {},
+                        ),
+                        SizedBox(height: 28.h(context)),
+                        HaveAccountSestion(
+                          label: "Already have an account?",
+                          buttonText: "Login",
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            RoutesName.loginScreen,
+                          ),
+                        ),
+                        SizedBox(height: 28.h(context)),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

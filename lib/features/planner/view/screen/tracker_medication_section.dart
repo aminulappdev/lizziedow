@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+import 'package:lizziedow/app/theme/light_theme_colors.dart';
+import 'package:lizziedow/app/theme/my_fonts.dart';
+import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/features/planner/model/planner_model.dart';
+import 'package:lizziedow/features/planner/view/widgets/tracker_medicine_bottom_sheet.dart';
+import 'package:lizziedow/features/planner/view/widgets/tracker_medicine_tile.dart';
+import 'package:lizziedow/features/planner/view/widgets/tracker_shared_widgets.dart';
+
+class TrackerMedicationSection extends StatelessWidget {
+  const TrackerMedicationSection({
+    super.key,
+    required this.medicines,
+  });
+
+  final List<PlannerTrackerMedicineData> medicines;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Medical',
+                  style: MyFonts.dmSans.copyWith(
+                    color: LightThemeColors.darkBrown,
+                    fontSize: 20.sp(context),
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              Text(
+                '12 Items',
+                style: MyFonts.dmSans.copyWith(
+                  color: const Color(0xFF8F837A),
+                  fontSize: 12.sp(context),
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 10.h(context)),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
+          child: Column(
+            children: List.generate(medicines.length, (index) {
+              return TrackerMedicineTile(
+                title: medicines[index].title,
+                detail: medicines[index].detail,
+                isTakenToday: medicines[index].isTakenToday,
+                showDivider: index != medicines.length - 1,
+              );
+            }),
+          ),
+        ),
+        SizedBox(height: 150.h(context)),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
+          child: TrackerPrimaryButton(
+            label: 'Add New Medication',
+            onPressed: () {
+              showModalBottomSheet<void>(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(18.r(context)),
+                  ),
+                ),
+                builder: (_) => const TrackerMedicineBottomSheet(),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
