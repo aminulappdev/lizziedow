@@ -13,6 +13,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final bool enabled;
   final Widget? prefixIcon;
+  final double? borderRadius;
 
   const CustomButton({
     super.key,
@@ -24,7 +25,7 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.backgroundColor,
     this.borderColor,
-    this.prefixIcon,
+    this.prefixIcon, this.borderRadius,
   });
 
   @override
@@ -49,7 +50,7 @@ class CustomButton extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(color: effectiveBorderColor),
             color: effectiveBackgroundColor,
-            borderRadius: BorderRadius.circular(30.r(context)),
+            borderRadius: BorderRadius.circular(borderRadius ?? 30.r(context)),
           ),
           child: Center(
             child: Row(

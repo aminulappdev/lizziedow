@@ -31,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordFocus = FocusNode();
 
   @override
+
   void dispose() {
     _emailFocus.dispose();
     _passwordFocus.dispose();

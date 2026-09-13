@@ -13,7 +13,7 @@ class TrackerMedicineTile extends StatelessWidget {
     required this.isTakenToday,
     required this.showDivider,
   });
-
+ 
   final String title;
   final String detail;
   final bool isTakenToday;
@@ -83,14 +83,18 @@ class TrackerMedicineTile extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: 15.w(context),
-                height: 15.w(context),
-                child: Checkbox(
-                  value: isTakenToday,
-                  onChanged: (_) {},
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  side: const BorderSide(color: Color(0xFF6E625B)),
-                  activeColor: LightThemeColors.buttonColor,
+                width: 10.w(context),
+                height: 10.w(context),
+                child: Transform.scale(
+                  scale: 0.62,
+                  child: Checkbox(
+                    value: isTakenToday,
+                    onChanged: (_) {},
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.compact,
+                    side: const BorderSide(color: Color(0xFF6E625B)),
+                    activeColor: LightThemeColors.buttonColor,
+                  ),
                 ),
               ),
               SizedBox(width: 6.w(context)),

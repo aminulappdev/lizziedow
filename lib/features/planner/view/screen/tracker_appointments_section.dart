@@ -3,14 +3,11 @@ import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/features/homescreen/view/widgets/appointment_tile.dart';
+import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 import 'package:lizziedow/features/planner/model/planner_model.dart';
-import 'package:lizziedow/features/planner/view/widgets/tracker_shared_widgets.dart';
 
 class TrackerAppointmentsSection extends StatelessWidget {
-  const TrackerAppointmentsSection({
-    super.key,
-    required this.appointments,
-  });
+  const TrackerAppointmentsSection({super.key, required this.appointments});
 
   final List<PlannerAppointmentData> appointments;
 
@@ -57,13 +54,7 @@ class TrackerAppointmentsSection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 244.h(context)),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
-          child: TrackerPrimaryButton(
-            label: 'Add New Medication',
-            onPressed: () {},
-          ),
-        ),
+        CustomButton(text: 'Add Appointment', onPressed: () {}),
       ],
     );
   }

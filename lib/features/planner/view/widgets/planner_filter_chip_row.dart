@@ -11,8 +11,8 @@ class PlannerFilterChipRow extends StatelessWidget {
   });
 
   final List<String> labels;
-  final int selectedIndex;
-  final ValueChanged<int> onSelected;
+  final int selectedIndex; 
+  final ValueChanged<int> onSelected; 
 
   @override
   Widget build(BuildContext context) {

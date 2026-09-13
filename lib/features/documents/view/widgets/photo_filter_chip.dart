@@ -3,8 +3,8 @@ import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 
-class HomeFilterChip extends StatelessWidget {
-  const HomeFilterChip({
+class PhotoFilterChip extends StatelessWidget {
+  const PhotoFilterChip({
     super.key,
     required this.label,
     required this.isSelected,
@@ -15,19 +15,19 @@ class HomeFilterChip extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        alignment: Alignment.center,
         padding: EdgeInsets.symmetric(
-          horizontal: 18.w(context),
-          vertical: 13.h(context),
+          horizontal: 16.w(context),
+          vertical: 12.h(context),
         ),
         decoration: BoxDecoration(
           color: isSelected ? LightThemeColors.buttonColor : Colors.white,
           borderRadius: BorderRadius.circular(100.r(context)),
+          border: Border.all(color: const Color(0xFFF1EAE4)),
         ),
         child: Text(
           label,
@@ -35,7 +35,7 @@ class HomeFilterChip extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: MyFonts.dmSans.copyWith(
             color: isSelected ? Colors.white : const Color(0xFF7E756F),
-            fontSize: 12.sp(context),
+            fontSize: 10.sp(context),
             fontWeight: FontWeight.w700,
           ),
         ),

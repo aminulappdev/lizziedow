@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 import 'package:lizziedow/features/planner/model/planner_model.dart';
 import 'package:lizziedow/features/planner/view/widgets/tracker_medicine_bottom_sheet.dart';
 import 'package:lizziedow/features/planner/view/widgets/tracker_medicine_tile.dart';
-import 'package:lizziedow/features/planner/view/widgets/tracker_shared_widgets.dart';
 
 class TrackerMedicationSection extends StatelessWidget {
   const TrackerMedicationSection({
@@ -61,8 +61,8 @@ class TrackerMedicationSection extends StatelessWidget {
         SizedBox(height: 150.h(context)),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
-          child: TrackerPrimaryButton(
-            label: 'Add New Medication',
+          child: CustomButton(
+            text: 'Add New Medication',
             onPressed: () {
               showModalBottomSheet<void>(
                 context: context,

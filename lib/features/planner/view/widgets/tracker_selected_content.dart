@@ -12,7 +12,7 @@ class TrackerSelectedContent extends StatelessWidget {
   final PlannerState state;
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     if (state.selectedTrackerFilterIndex == 1) {
       return TrackerMedicationSection(medicines: state.trackerMedicines);
     }

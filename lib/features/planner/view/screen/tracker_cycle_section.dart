@@ -1,8 +1,11 @@
+import 'package:crash_safe_image/crash_safe_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/features/planner/view/widgets/tracker_shared_widgets.dart';
+import 'package:lizziedow/features/auth/view/widgets/custom_text_field.dart';
+import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class TrackerCycleSection extends StatelessWidget {
   const TrackerCycleSection({super.key});
@@ -13,14 +16,14 @@ class TrackerCycleSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
       child: Column(
         children: [
-          SizedBox(height: 18.h(context)),
+          SizedBox(height: 10.h(context)),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.calendar_month_outlined,
-                color: LightThemeColors.darkBrown,
-                size: 25.sp(context),
+              CrashSafeImage(
+                Assets.images.calender02.path,
+                width: 24.w(context),
+                height: 24.h(context),
               ),
               SizedBox(width: 8.w(context)),
               Text(
@@ -45,14 +48,16 @@ class TrackerCycleSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24.h(context)),
-          const TrackerTextField(
+          CustomTextField(
             hintText: 'Enter date',
-            suffixIcon: Icons.calendar_today,
+            controller: TextEditingController(),
+            label: '',
           ),
           SizedBox(height: 16.h(context)),
-          const TrackerTextField(
-            hintText: 'Category',
-            suffixIcon: Icons.keyboard_arrow_down,
+          CustomTextField(
+            hintText: 'Enter cycle length',
+            controller: TextEditingController(),
+            label: '',
           ),
           SizedBox(height: 198.h(context)),
           Text(
@@ -64,7 +69,11 @@ class TrackerCycleSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 14.h(context)),
-          TrackerPrimaryButton(label: 'Update Cycle', onPressed: () {}),
+          CustomButton(
+            text: 'Update Cycle',
+            onPressed: () {},
+            borderRadius: 12.r(context),
+          ),
         ],
       ),
     );

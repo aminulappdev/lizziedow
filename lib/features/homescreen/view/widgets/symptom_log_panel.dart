@@ -9,10 +9,12 @@ class SymptomLogPanel extends StatelessWidget {
     super.key,
     required this.moods,
     required this.symptoms,
+    this.buttonText = 'Save',
   });
 
   final List<String> moods;
-  final List<String> symptoms; 
+  final List<String> symptoms;
+  final String buttonText;
  
   @override
   Widget build(BuildContext context) {
@@ -51,11 +53,10 @@ class SymptomLogPanel extends StatelessWidget {
             ),
           ),
           SizedBox(height: 14.h(context)),
-          CustomButton(text: 'Save', onPressed: () {}),
+          CustomButton(text: buttonText, onPressed: () {}),
         ],
       ),
     );
   }
 }
-
 

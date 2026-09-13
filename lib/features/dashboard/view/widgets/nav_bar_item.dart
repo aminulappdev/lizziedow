@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/features/documents/view/screen/documents_screen.dart';
 import 'package:lizziedow/features/homescreen/view/screen/home_screen.dart';
 import 'package:lizziedow/features/planner/view/screen/planner_screen.dart';
+import 'package:lizziedow/features/results/view/screen/results_screen.dart';
 
 class DashboardNavItem {
   const DashboardNavItem({required this.icon, required this.label});
@@ -23,8 +25,16 @@ class DashboardTabBody extends StatelessWidget {
       return const PlannerScreen();
     }
 
+    if (index == 1) {
+      return const ResultsScreen();
+    }
+
     if (index == 2) {
       return const HomeScreen();
+    }
+
+    if (index == 3) {
+      return const DocumentsScreen();
     }
 
     return Center(
