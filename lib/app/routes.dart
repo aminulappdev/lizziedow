@@ -10,6 +10,9 @@ import 'package:lizziedow/features/auth/view/screen/signup_page.dart';
 import 'package:lizziedow/features/auth/view/screen/verify_email_page.dart';
 import 'package:lizziedow/features/dashboard/view/screen/dashboard_screen.dart';
 import 'package:lizziedow/features/onboarding/view/screen/onboarding_screen.dart';
+import 'package:lizziedow/features/profile/view/screen/change_password_screen.dart';
+import 'package:lizziedow/features/profile/view/screen/edit_profile_screen.dart';
+import 'package:lizziedow/features/profile/view/screen/profile_info_screen.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -46,6 +49,21 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const SetPasswordPage());
       case RoutesName.setTypeScreen:
         return MaterialPageRoute(builder: (_) => SetTypeScreen());
+      case RoutesName.editProfileScreen:
+        return MaterialPageRoute(builder: (_) => const EditProfileScreen());
+      case RoutesName.changePasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      case RoutesName.profileInfoScreen:
+        final arguments = settings.arguments;
+        final header = arguments is Map ? arguments['header'] as String? : null;
+        final data = arguments is Map ? arguments['data'] as String? : null;
+
+        return MaterialPageRoute(
+          builder: (_) => ProfileInfoScreen(
+            header: header ?? '',
+            data: data ?? '',
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) {

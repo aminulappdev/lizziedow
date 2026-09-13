@@ -5,6 +5,7 @@ import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/features/documents/view/screen/documents_screen.dart';
 import 'package:lizziedow/features/homescreen/view/screen/home_screen.dart';
 import 'package:lizziedow/features/planner/view/screen/planner_screen.dart';
+import 'package:lizziedow/features/profile/view/screen/profile_screen.dart';
 import 'package:lizziedow/features/results/view/screen/results_screen.dart';
 
 class DashboardNavItem {
@@ -35,6 +36,10 @@ class DashboardTabBody extends StatelessWidget {
 
     if (index == 3) {
       return const DocumentsScreen();
+    }
+
+    if (index == 4) {
+      return const ProfileScreen();
     }
 
     return Center(

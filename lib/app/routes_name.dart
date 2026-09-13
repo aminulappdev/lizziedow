@@ -7,4 +7,7 @@ class RoutesName {
   static const String forgotPasswordScreen = 'forgot_password_screen';
   static const String setPasswordScreen = 'set_password_screen';
   static const String setTypeScreen = 'set_type_screen';
+  static const String editProfileScreen = 'edit_profile_screen';
+  static const String changePasswordScreen = 'change_password_screen';
+  static const String profileInfoScreen = 'profile_info_screen';
 }
