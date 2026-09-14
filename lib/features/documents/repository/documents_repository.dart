@@ -3,14 +3,10 @@ import 'package:lizziedow/features/documents/model/documents_model.dart';
 class DocumentsRepository {
   const DocumentsRepository();
 
-  List<String> get topFilters => const [
-    'Documents',
-    'Photos',
-  ];
+  List<String> get topFilters => const ['Documents', 'Photos'];
 
   List<String> get photoFilters => const [
     'All',
-    'Consultation',
     'Stims',
     'Trigger',
     'Egg Retrieval',

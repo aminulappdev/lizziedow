@@ -19,3 +19,15 @@ class ProfileMenuItemSelectedEvent extends ProfileEvent {
   @override
   List<Object?> get props => [index];
 }
+
+class ProfileCurrentPasswordVisibilityToggledEvent extends ProfileEvent {
+  const ProfileCurrentPasswordVisibilityToggledEvent();
+}
+
+class ProfileNewPasswordVisibilityToggledEvent extends ProfileEvent {
+  const ProfileNewPasswordVisibilityToggledEvent();
+}
+
+class ProfileConfirmPasswordVisibilityToggledEvent extends ProfileEvent {
+  const ProfileConfirmPasswordVisibilityToggledEvent();
+}

@@ -4,8 +4,8 @@ import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/features/documents/bloc/documents_bloc.dart';
 import 'package:lizziedow/features/documents/bloc/documents_event.dart';
 import 'package:lizziedow/features/documents/bloc/documents_state.dart';
-import 'package:lizziedow/features/documents/view/widgets/documents_content.dart';
-import 'package:lizziedow/features/documents/view/widgets/photos_content.dart';
+import 'package:lizziedow/features/documents/view/screen/documents_content.dart';
+import 'package:lizziedow/features/documents/view/screen/photos_content.dart';
 import 'package:lizziedow/features/planner/view/widgets/planner_filter_chip_row.dart';
 
 class DocumentsScreen extends StatelessWidget {
@@ -28,7 +28,7 @@ class DocumentsScreen extends StatelessWidget {
                 onSelected: (index) {
                   context.read<DocumentsBloc>().add(
                     DocumentsTopFilterChangedEvent(index),
-                  );
+                  ); 
                 },
               ),
               SizedBox(height: 24.h(context)),

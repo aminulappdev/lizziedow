@@ -28,3 +28,11 @@ class AuthPasswordChanged extends AuthEvent {
   @override
   List<Object?> get props => [password];
 }
+
+class AuthPasswordVisibilityToggled extends AuthEvent {
+  const AuthPasswordVisibilityToggled();
+}
+
+class AuthConfirmPasswordVisibilityToggled extends AuthEvent {
+  const AuthConfirmPasswordVisibilityToggled();
+}

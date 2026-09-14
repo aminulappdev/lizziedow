@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/results/bloc/results_bloc.dart';
 import 'package:lizziedow/features/results/bloc/results_event.dart';
 import 'package:lizziedow/features/results/model/results_model.dart';
@@ -17,48 +18,15 @@ class QuestionInput extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: SizedBox(
-            height: 48.h(context),
-            child: TextField(
-              controller: controller,
-              style: MyFonts.dmSans.copyWith(
-                color: LightThemeColors.darkBrown,
-                fontSize: 11.sp(context),
-                fontWeight: FontWeight.w700,
-              ),
-              decoration: InputDecoration(
-                hintText: 'write anything you want to ask.....',
-                hintStyle: MyFonts.dmSans.copyWith(
-                  color: const Color(0xFFA99E97),
-                  fontSize: 10.sp(context),
-                  fontWeight: FontWeight.w700,
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 14.w(context),
-                  vertical: 14.h(context),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r(context)),
-                  borderSide: const BorderSide(color: Color(0xFFE8DED4)),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r(context)),
-                  borderSide: const BorderSide(color: Color(0xFFE8DED4)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r(context)),
-                  borderSide: const BorderSide(color: Color(0xFFB9A99B)),
-                ),
-              ),
-            ),
+          child: CustomTextField(
+            controller: controller,
+            hintText: 'Type your question here...',
           ),
         ),
         SizedBox(width: 10.w(context)),
         SizedBox(
           width: 70.w(context),
-          height: 48.h(context),
+          height: 54.h(context),
           child: ElevatedButton(
             onPressed: () => _addQuestion(context),
             style: ElevatedButton.styleFrom(
@@ -92,10 +60,7 @@ class QuestionInput extends StatelessWidget {
 
     context.read<ResultsBloc>().add(
       ResultQuestionAddedEvent(
-        ResultQuestionData(
-          title: title,
-          date: 'Dec 4, 2019 21:42',
-        ),
+        ResultQuestionData(title: title, date: 'Dec 4, 2019 21:42'),
       ),
     );
     controller.clear();

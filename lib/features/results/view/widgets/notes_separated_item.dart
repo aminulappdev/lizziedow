@@ -12,7 +12,7 @@ class NotesSeparatedItem extends StatelessWidget {
   final bool isLast;
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Column(
       children: [
         child,

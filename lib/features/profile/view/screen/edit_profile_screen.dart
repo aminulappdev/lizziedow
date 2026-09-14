@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/features/profile/view/widgets/profile_form_field.dart';
+import 'package:lizziedow/core/widgets/custom_text_field.dart';
+import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
+import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 import 'package:lizziedow/features/profile/view/widgets/profile_page_header.dart';
-import 'package:lizziedow/features/profile/view/widgets/profile_save_button.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
@@ -63,28 +64,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                   ),
                   SizedBox(height: 24.h(context)),
-                  ProfileFormField(
-                    label: 'Username',
+                  LabelText(label: 'Username'),
+                  SizedBox(height: 7.h(context)),
+                  CustomTextField(
                     hintText: 'Enter your username',
                     controller: _usernameController,
-                  ),
-                  SizedBox(height: 18.h(context)),
-                  ProfileFormField(
-                    label: 'Email',
-                    hintText: 'Enter your email address',
-                    controller: _emailController,
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(
-                18.w(context),
-                10.h(context),
-                18.w(context),
-                22.h(context),
+              padding:  EdgeInsets.all(18.w(context)),
+              child: CustomButton(
+                text: 'Save Changes',
+                onPressed: () {},
+                borderRadius: 12,
               ),
-              child: ProfileSaveButton(onPressed: () => Navigator.pop(context)),
             ),
           ],
         ),

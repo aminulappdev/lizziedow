@@ -5,7 +5,7 @@ import 'package:lizziedow/features/planner/view/widgets/planner_filter_chip_row.
 import 'package:lizziedow/features/results/bloc/results_bloc.dart';
 import 'package:lizziedow/features/results/bloc/results_event.dart';
 import 'package:lizziedow/features/results/bloc/results_state.dart';
-import 'package:lizziedow/features/results/view/widgets/result_content.dart';
+import 'package:lizziedow/features/results/view/screen/result_content.dart';
 import 'package:lizziedow/features/results/view/widgets/results_notes_content.dart';
 
 class ResultsScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class ResultsScreen extends StatelessWidget {
               ),
               SizedBox(height: 24.h(context)),
               if (state.selectedTopFilterIndex == 0)
-                ResultsContent(state: state)
+                ResultsContent(state: state) 
               else
                 ResultsNotesContent(
                   state: state,

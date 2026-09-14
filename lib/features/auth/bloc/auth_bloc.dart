@@ -10,6 +10,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEmailChanged>(_onEmailChanged);
     on<AuthPasswordChanged>(_onPasswordChanged);
     on<LoginRequested>(_onLoginRequested);
+    on<AuthPasswordVisibilityToggled>(_onPasswordVisibilityToggled);
+    on<AuthConfirmPasswordVisibilityToggled>(
+      _onConfirmPasswordVisibilityToggled,
+    );
   }
 
   final AuthRepository _authRepository;
@@ -26,6 +30,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) {
     emit(state.copyWith(password: event.password));
+  }
+
+  void _onPasswordVisibilityToggled(
+    AuthPasswordVisibilityToggled event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
+  }
+
+  void _onConfirmPasswordVisibilityToggled(
+    AuthConfirmPasswordVisibilityToggled event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        isConfirmPasswordVisible: !state.isConfirmPasswordVisible,
+      ),
+    );
   }
 
   Future<void> _onLoginRequested(

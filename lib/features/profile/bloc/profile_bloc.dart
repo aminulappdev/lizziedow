@@ -9,6 +9,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       super(const ProfileState()) {
     on<ProfileStartedEvent>(_onProfileStarted);
     on<ProfileMenuItemSelectedEvent>(_onProfileMenuItemSelected);
+    on<ProfileCurrentPasswordVisibilityToggledEvent>(
+      _onCurrentPasswordVisibilityToggled,
+    );
+    on<ProfileNewPasswordVisibilityToggledEvent>(
+      _onNewPasswordVisibilityToggled,
+    );
+    on<ProfileConfirmPasswordVisibilityToggledEvent>(
+      _onConfirmPasswordVisibilityToggled,
+    );
   }
 
   final ProfileRepository _profileRepository;
@@ -30,5 +39,38 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) {
     emit(state.copyWith(selectedMenuIndex: event.index));
+  }
+
+  void _onCurrentPasswordVisibilityToggled(
+    ProfileCurrentPasswordVisibilityToggledEvent event,
+    Emitter<ProfileState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        isCurrentPasswordVisible: !state.isCurrentPasswordVisible,
+      ),
+    );
+  }
+
+  void _onNewPasswordVisibilityToggled(
+    ProfileNewPasswordVisibilityToggledEvent event,
+    Emitter<ProfileState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        isNewPasswordVisible: !state.isNewPasswordVisible,
+      ),
+    );
+  }
+
+  void _onConfirmPasswordVisibilityToggled(
+    ProfileConfirmPasswordVisibilityToggledEvent event,
+    Emitter<ProfileState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        isConfirmPasswordVisible: !state.isConfirmPasswordVisible,
+      ),
+    );
   }
 }

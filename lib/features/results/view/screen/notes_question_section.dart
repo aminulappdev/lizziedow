@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/section_header.dart';
 import 'package:lizziedow/features/results/bloc/results_state.dart';
-import 'package:lizziedow/features/results/view/widgets/notes_list_header.dart';
 import 'package:lizziedow/features/results/view/widgets/notes_separated_item.dart';
 import 'package:lizziedow/features/results/view/widgets/question_input.dart';
 import 'package:lizziedow/features/results/view/widgets/question_tile.dart';
@@ -47,7 +47,18 @@ class NotesQuestionSection extends StatelessWidget {
           SizedBox(height: 22.h(context)),
           QuestionInput(controller: controller),
           SizedBox(height: 22.h(context)),
-          NotesListHeader(title: 'Questions', count: state.totalQuestionsCount),
+          SectionHeader(
+            horizontalPadding: 0.0,
+            title: 'Questions',
+            trailing: Text(
+              '${state.totalNotesCount} Total',
+              style: MyFonts.dmSans.copyWith(
+                color: LightThemeColors.darkBrown,
+                fontSize: 10.sp(context),
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
           SizedBox(height: 7.h(context)),
           ...List.generate(state.questions.length, (index) {
             final question = state.questions[index];

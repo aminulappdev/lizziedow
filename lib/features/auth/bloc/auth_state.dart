@@ -10,6 +10,8 @@ class AuthState extends Equatable {
     this.postApiStatus = AuthPostApiStatus.initial,
     this.message = '',
     this.user,
+    this.isPasswordVisible = false,
+    this.isConfirmPasswordVisible = false,
   });
 
   final String email;
@@ -17,6 +19,8 @@ class AuthState extends Equatable {
   final AuthPostApiStatus postApiStatus;
   final String message;
   final UserModel? user;
+  final bool isPasswordVisible;
+  final bool isConfirmPasswordVisible;
 
   AuthState copyWith({
     String? email,
@@ -24,6 +28,8 @@ class AuthState extends Equatable {
     AuthPostApiStatus? postApiStatus,
     String? message,
     UserModel? user,
+    bool? isPasswordVisible,
+    bool? isConfirmPasswordVisible,
   }) {
     return AuthState(
       email: email ?? this.email,
@@ -31,6 +37,9 @@ class AuthState extends Equatable {
       postApiStatus: postApiStatus ?? this.postApiStatus,
       message: message ?? this.message,
       user: user ?? this.user,
+      isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
+      isConfirmPasswordVisible:
+          isConfirmPasswordVisible ?? this.isConfirmPasswordVisible,
     );
   }
 
@@ -41,5 +50,7 @@ class AuthState extends Equatable {
         postApiStatus,
         message,
         user,
+        isPasswordVisible,
+        isConfirmPasswordVisible,
       ];
 }

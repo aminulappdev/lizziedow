@@ -4,20 +4,25 @@ import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 
 class SectionHeader extends StatelessWidget {
-  const SectionHeader({super.key, 
+  const SectionHeader({
+    super.key,
     required this.title,
     required this.trailing,
     this.onTap,
+    this.horizontalPadding,
   });
 
   final String title;
   final Widget trailing;
   final VoidCallback? onTap;
+  final double? horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding?.w(context) ?? 18.w(context),
+      ),
       child: Row(
         children: [
           Expanded(

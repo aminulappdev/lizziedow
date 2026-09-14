@@ -1,8 +1,10 @@
+import 'package:crash_safe_image/crash_safe_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/features/results/model/results_model.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class QuestionTile extends StatelessWidget {
   const QuestionTile({super.key, required this.question});
@@ -12,14 +14,14 @@ class QuestionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h(context)),
+      padding: EdgeInsets.symmetric(vertical: 10.h(context)), 
       child: Row(
         children: [
-          Icon(
-            Icons.quiz_outlined,
-            color: LightThemeColors.darkBrown,
-            size: 16.sp(context),
-          ),
+         CrashSafeImage(
+           Assets.images.fileQuestion.path,
+           width: 24.w(context),
+           height: 24.h(context),
+         ),
           SizedBox(width: 8.w(context)),
           Expanded(
             child: Column(

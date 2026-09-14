@@ -13,6 +13,7 @@ import 'package:lizziedow/features/auth/view/widgets/have_account.dart';
 import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_devider.dart';
+import 'package:lizziedow/features/auth/view/widgets/password_visibility_icon.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 import 'package:lizziedow/gen/assets.gen.dart';
 
@@ -113,10 +114,18 @@ class _LoginPageState extends State<LoginPage> {
                               controller: _passwordController,
                               label: 'Password',
                               hintText: 'Enter your password',
-                              obscureText: true,
+                              obscureText: !state.isPasswordVisible,
                               focusNode: _passwordFocus,
                               textInputAction: TextInputAction.done,
                               validator: ValidatorService.validateSimpleField,
+                              suffixIcon: PasswordVisibilityIcon(
+                                isVisible: state.isPasswordVisible,
+                                onTap: () {
+                                  context.read<AuthBloc>().add(
+                                    const AuthPasswordVisibilityToggled(),
+                                  );
+                                },
+                              ),
                               onChanged: (value) {
                                 context.read<AuthBloc>().add(
                                   AuthPasswordChanged(value),

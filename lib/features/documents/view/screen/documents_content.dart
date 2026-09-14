@@ -7,7 +7,8 @@ import 'package:lizziedow/features/documents/bloc/documents_bloc.dart';
 import 'package:lizziedow/features/documents/bloc/documents_state.dart';
 import 'package:lizziedow/features/documents/view/widgets/document_form_bottom_sheet.dart';
 import 'package:lizziedow/features/documents/view/widgets/document_tile.dart';
-import 'package:lizziedow/features/documents/view/widgets/document_upload_card.dart';
+import 'package:lizziedow/features/results/view/widgets/result_upload_card.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class DocumentsContent extends StatelessWidget {
   const DocumentsContent({super.key, required this.state});
@@ -40,8 +41,9 @@ class DocumentsContent extends StatelessWidget {
             ),
           ),
           SizedBox(height: 26.h(context)),
-          DocumentUploadCard(
-            onSelectFile: () {
+          CustomUploadCard(
+            iconPath: Assets.images.fileUoload.path,
+            onPressed: () {
               showModalBottomSheet<void>(
                 context: context,
                 isScrollControlled: true,
@@ -60,7 +62,9 @@ class DocumentsContent extends StatelessWidget {
                 },
               );
             },
+            buttonText: 'Select File',
           ),
+
           SizedBox(height: 22.h(context)),
           Row(
             children: [

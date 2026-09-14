@@ -46,34 +46,35 @@ class ProfileScreen extends StatelessWidget {
   void _handleMenuSelection(BuildContext context, int index) {
     const profileRepository = ProfileRepository();
 
-    if (index == 0) {
-      Navigator.pushNamed(context, RoutesName.editProfileScreen);
-    }
-
-    if (index == 1) {
-      Navigator.pushNamed(context, RoutesName.changePasswordScreen);
-    }
-
-    if (index == 4) {
-      Navigator.pushNamed(
-        context,
-        RoutesName.profileInfoScreen,
-        arguments: {
-          'header': 'Terms & Conditions',
-          'data': profileRepository.termsConditions,
-        },
-      );
-    }
-
-    if (index == 5) {
-      Navigator.pushNamed(
-        context,
-        RoutesName.profileInfoScreen,
-        arguments: {
-          'header': 'Privacy Policy',
-          'data': profileRepository.privacyPolicy,
-        },
-      );
+    switch (index) {
+      case 0:
+        Navigator.pushNamed(context, RoutesName.editProfileScreen);
+        break;
+      case 1:
+        Navigator.pushNamed(context, RoutesName.changePasswordScreen);
+        break;
+      case 4:
+        Navigator.pushNamed(
+          context,
+          RoutesName.profileInfoScreen,
+          arguments: {
+            'header': 'Terms & Conditions',
+            'data': profileRepository.termsConditions,
+          },
+        );
+        break;
+      case 5:
+        Navigator.pushNamed(
+          context,
+          RoutesName.profileInfoScreen,
+          arguments: {
+            'header': 'Privacy Policy',
+            'data': profileRepository.privacyPolicy,
+          },
+        );
+        break;
+      default:
+        break;
     }
   }
 }
