@@ -12,6 +12,7 @@ class PlannerBloc extends Bloc<PlannerEvent, PlannerState> {
     on<PlannerSectionFilterChangedEvent>(_onPlannerSectionFilterChanged);
     on<PlannerChecklistFilterChangedEvent>(_onPlannerChecklistFilterChanged);
     on<PlannerTrackerFilterChangedEvent>(_onPlannerTrackerFilterChanged);
+    on<PlannerCostAlreadyPaidChangedEvent>(_onPlannerCostAlreadyPaidChanged);
   }
 
   final PlannerRepository _plannerRepository;
@@ -64,5 +65,12 @@ class PlannerBloc extends Bloc<PlannerEvent, PlannerState> {
     Emitter<PlannerState> emit,
   ) {
     emit(state.copyWith(selectedTrackerFilterIndex: event.index));
+  }
+
+  void _onPlannerCostAlreadyPaidChanged(
+    PlannerCostAlreadyPaidChangedEvent event,
+    Emitter<PlannerState> emit,
+  ) {
+    emit(state.copyWith(isCostAlreadyPaid: event.isAlreadyPaid));
   }
 }

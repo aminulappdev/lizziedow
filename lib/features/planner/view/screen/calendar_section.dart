@@ -10,7 +10,7 @@ class CalendarSection extends StatelessWidget {
     super.key,
     required this.state,
     required this.onSectionSelected,
-  });
+  }); 
 
   final PlannerState state;
   final ValueChanged<int> onSectionSelected;

@@ -6,19 +6,24 @@ class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
     required this.controller,
-    required this.label,
+    this.label,
     this.hintText,
     this.keyboardType,
-    this.obscureText = false, 
+    this.obscureText = false,
     this.focusNode,
     this.textInputAction,
     this.onChanged,
     this.onFieldSubmitted,
+    this.onTap,
     this.validator,
+    this.maxLines,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.readOnly = false,
   });
 
   final TextEditingController controller;
-  final String label;
+  final String? label;
   final String? hintText;
   final TextInputType? keyboardType;
   final bool obscureText;
@@ -26,7 +31,12 @@ class CustomTextField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onFieldSubmitted;
+  final VoidCallback? onTap;
   final FormFieldValidator<String>? validator;
+  final int? maxLines;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final bool readOnly;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -43,8 +53,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final showVisibilityButton = widget.obscureText;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,7 +64,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           textInputAction: widget.textInputAction,
           onChanged: widget.onChanged,
           onFieldSubmitted: widget.onFieldSubmitted,
+          onTap: widget.onTap,
           validator: widget.validator,
+          maxLines: widget.maxLines ?? 1,
+          readOnly: widget.readOnly,
           style: MyFonts.dmSans.copyWith(
             color: const Color(0xFF403731),
             fontSize: 13.sp(context),
@@ -76,22 +87,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
               horizontal: 18.w(context),
               vertical: 14.h(context),
             ),
-            suffixIcon: showVisibilityButton
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _isObscured = !_isObscured;
-                      });
-                    },
-                    icon: Icon(
-                      _isObscured
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      color: const Color(0xFFAFA8A2),
-                      size: 20.sp(context),
-                    ),
-                  )
-                : null,
+            suffixIcon: Padding(
+              padding: EdgeInsets.all(18.w(context)),
+              child: widget.suffixIcon,
+            ),
+            prefixIcon: widget.prefixIcon,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r(context)),
               borderSide: BorderSide.none,

@@ -12,26 +12,23 @@ class TrackerSelectedContent extends StatelessWidget {
   final PlannerState state;
 
   @override
-   Widget build(BuildContext context) {
-    if (state.selectedTrackerFilterIndex == 1) {
-      return TrackerMedicationSection(medicines: state.trackerMedicines);
+  Widget build(BuildContext context) {
+    switch (state.selectedTrackerFilterIndex) { 
+      case 0:
+        return const TrackerCycleSection();
+      case 1:
+        return TrackerMedicationSection(medicines: state.trackerMedicines);
+      case 2:
+        return const TrackerSupplementsSection();
+      case 3:
+        return TrackerAppointmentsSection(appointments: state.appointments);
+      case 4:
+        return TrackerSymptomsSection(
+          moods: state.trackerMoods,
+          symptoms: state.trackerSymptoms,
+        );
+      default:
+        return const TrackerCycleSection();
     }
-
-    if (state.selectedTrackerFilterIndex == 3) {
-      return TrackerAppointmentsSection(appointments: state.appointments);
-    }
-
-    if (state.selectedTrackerFilterIndex == 4) {
-      return TrackerSymptomsSection(
-        moods: state.trackerMoods,
-        symptoms: state.trackerSymptoms,
-      );
-    }
-
-    if (state.selectedTrackerFilterIndex == 2) {
-      return const TrackerSupplementsSection();
-    }
-
-    return const TrackerCycleSection();
   }
 }

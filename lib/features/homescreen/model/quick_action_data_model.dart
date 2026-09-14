@@ -11,18 +11,29 @@ class QuickActionCardDataModel {
 }
 
 class MedicationData {
-  const MedicationData({required this.title, required this.detail});
+  const MedicationData({
+    required this.title,
+    required this.subtitle01,
+    required this.subtitle02,
+    required this.iconPath,
+  });
 
   final String title;
-  final String detail;
+  final String subtitle01;
+  final String subtitle02;
+  final String iconPath;
 }
 
 class AppointmentData {
   const AppointmentData({
-    required this.doctorName,
-    required this.schedule,
+    required this.title,
+    required this.subtitle01,
+    required this.subtitle02,
+    required this.iconPath,
   });
 
-  final String doctorName;
-  final String schedule;
+  final String title;
+  final String subtitle01;
+  final String subtitle02;
+  final String iconPath;
 }

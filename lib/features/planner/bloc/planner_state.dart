@@ -19,6 +19,7 @@ class PlannerState extends Equatable {
     this.trackerMedicines = const [],
     this.trackerMoods = const [],
     this.trackerSymptoms = const [],
+    this.isCostAlreadyPaid = false,
   });
 
   final int selectedTopFilterIndex;
@@ -37,6 +38,7 @@ class PlannerState extends Equatable {
   final List<PlannerTrackerMedicineData> trackerMedicines;
   final List<String> trackerMoods;
   final List<String> trackerSymptoms;
+  final bool isCostAlreadyPaid;
 
   PlannerState copyWith({
     int? selectedTopFilterIndex,
@@ -55,6 +57,7 @@ class PlannerState extends Equatable {
     List<PlannerTrackerMedicineData>? trackerMedicines,
     List<String>? trackerMoods,
     List<String>? trackerSymptoms,
+    bool? isCostAlreadyPaid,
   }) {
     return PlannerState(
       selectedTopFilterIndex:
@@ -77,6 +80,7 @@ class PlannerState extends Equatable {
       trackerMedicines: trackerMedicines ?? this.trackerMedicines,
       trackerMoods: trackerMoods ?? this.trackerMoods,
       trackerSymptoms: trackerSymptoms ?? this.trackerSymptoms,
+      isCostAlreadyPaid: isCostAlreadyPaid ?? this.isCostAlreadyPaid,
     );
   }
 
@@ -98,5 +102,6 @@ class PlannerState extends Equatable {
     trackerMedicines,
     trackerMoods,
     trackerSymptoms,
+    isCostAlreadyPaid,
   ];
 }

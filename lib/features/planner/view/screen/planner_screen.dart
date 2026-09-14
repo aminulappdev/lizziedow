@@ -30,7 +30,7 @@ class PlannerScreen extends StatelessWidget {
                   );
                 },
               ),
-              PlannerTopSection(
+              PlannerTopSection( 
                 state: state,
                 onSectionSelected: (index) {
                   context.read<PlannerBloc>().add(
@@ -42,7 +42,7 @@ class PlannerScreen extends StatelessWidget {
                     PlannerChecklistFilterChangedEvent(index),
                   );
                 },
-                onTrackerFilterSelected: (index) {
+                onTrackerFilterSelected: (index) { 
                   context.read<PlannerBloc>().add(
                     PlannerTrackerFilterChangedEvent(index),
                   );

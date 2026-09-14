@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/homescreen/view/widgets/option_card.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 
@@ -9,13 +10,13 @@ class SymptomLogPanel extends StatelessWidget {
     super.key,
     required this.moods,
     required this.symptoms,
-    this.buttonText = 'Save',
+    this.buttonText = 'Log Symptoms',
   });
 
   final List<String> moods;
   final List<String> symptoms;
   final String buttonText;
- 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,29 +35,38 @@ class SymptomLogPanel extends StatelessWidget {
             options: symptoms,
           ),
           SizedBox(height: 14.h(context)),
-          Container(
-            height: 198.h(context),
-            width: double.infinity,
-            padding: EdgeInsets.all(18.r(context)),
-            decoration: BoxDecoration(
-              color: Color(0xFFF6F0EB),
-              borderRadius: BorderRadius.circular(8.r(context)),
-            ),
-            alignment: Alignment.topLeft,
-            child: Text(
-              'write here in detail...',
-              style: MyFonts.dmSans.copyWith(
-                color: const Color(0xFF6B625B),
-                fontSize: 12.sp(context),
-                fontWeight: FontWeight.w700,
-              ),
-            ),
+          // Container(
+          //   height: 198.h(context),
+          //   width: double.infinity,
+          //   padding: EdgeInsets.all(18.r(context)),
+          //   decoration: BoxDecoration(
+          //     color: Color(0xFFF6F0EB),
+          //     borderRadius: BorderRadius.circular(8.r(context)),
+          //   ),
+          //   alignment: Alignment.topLeft,
+          //   child: Text(
+          //     'write here in detail...',
+          //     style: MyFonts.dmSans.copyWith(
+          //       color: const Color(0xFF6B625B),
+          //       fontSize: 12.sp(context),
+          //       fontWeight: FontWeight.w700,
+          //     ),
+          //   ),
+          // ),
+          CustomTextField(
+            hintText: 'Write here in detail...',
+            controller: TextEditingController(),
+            maxLines: 5,
+            label: '',
           ),
           SizedBox(height: 14.h(context)),
-          CustomButton(text: buttonText, onPressed: () {}),
+          CustomButton(
+            text: buttonText,
+            onPressed: () {},
+            borderRadius: 12.r(context),
+          ),
         ],
       ),
     );
   }
 }
-

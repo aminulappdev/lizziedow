@@ -5,10 +5,10 @@ import 'package:lizziedow/features/homescreen/bloc/home_bloc.dart';
 import 'package:lizziedow/features/homescreen/bloc/home_event.dart';
 import 'package:lizziedow/features/homescreen/bloc/home_state.dart';
 import 'package:lizziedow/features/homescreen/view/screen/appoinment_section.dart';
-import 'package:lizziedow/features/homescreen/view/screen/meditation_content.dart';
+import 'package:lizziedow/features/homescreen/view/screen/meditation_section.dart';
 import 'package:lizziedow/features/homescreen/view/widgets/home_filter_chip.dart';
 import 'package:lizziedow/features/homescreen/view/widgets/quick_action_card.dart';
-import 'package:lizziedow/features/homescreen/view/widgets/symptom_log_panel.dart';
+import 'package:lizziedow/features/homescreen/view/screen/symptom_log_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

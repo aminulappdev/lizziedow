@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/features/homescreen/view/widgets/appointment_tile.dart';
-import 'package:lizziedow/features/homescreen/view/widgets/medication_tile.dart';
-import 'package:lizziedow/features/homescreen/view/widgets/section_header.dart';
+import 'package:lizziedow/core/widgets/custom_tile.dart';
+import 'package:lizziedow/core/widgets/section_header.dart';
 import 'package:lizziedow/features/planner/bloc/planner_state.dart';
 import 'package:lizziedow/features/planner/model/planner_model.dart';
 import 'package:lizziedow/features/planner/view/widgets/journal_tile.dart';
@@ -13,9 +12,9 @@ class PlannerSelectedContent extends StatelessWidget {
   const PlannerSelectedContent({super.key, required this.state});
 
   final PlannerState state;
-
+ 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     if (state.selectedSectionFilterIndex == 1) {
       return _PlannerMedicationsContent(medications: state.medications);
     }
@@ -54,10 +53,13 @@ class _PlannerAppointmentsContent extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
           child: Column(
             children: List.generate(appointments.length, (index) {
-              return AppointmentTile(
-                doctorName: appointments[index].doctorName,
-                schedule: appointments[index].schedule,
+              return CustomTile(
+                title: appointments[index].title,
+                subtitle01: appointments[index].subtitle01,
+                subtitle02: appointments[index].subtitle02,
                 showDivider: index != appointments.length - 1,
+                iconPath: appointments[index].iconPath,
+                trailingWidget: Icon(Icons.more_vert, size: 20.sp(context)),
               );
             }),
           ),
@@ -93,10 +95,12 @@ class _PlannerMedicationsContent extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
           child: Column(
             children: List.generate(medications.length, (index) {
-              return MedicationTile(
+              return CustomTile(
                 title: medications[index].title,
-                detail: medications[index].detail,
+                subtitle01: medications[index].subtitle01,
+                subtitle02: medications[index].subtitle02,
                 showDivider: index != medications.length - 1,
+                iconPath: medications[index].iconPath,
               );
             }),
           ),

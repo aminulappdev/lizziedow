@@ -3,7 +3,7 @@ import 'package:lizziedow/app/routes_name.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/app/utils/validator_services.dart';
-import 'package:lizziedow/features/auth/view/widgets/custom_text_field.dart';
+import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';

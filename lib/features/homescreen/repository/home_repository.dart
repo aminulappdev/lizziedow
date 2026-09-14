@@ -9,7 +9,7 @@ class HomeRepository {
     'Medications',
     'Appointments',
   ];
-  
+
   List<QuickActionCardDataModel> get quickCards => [
     QuickActionCardDataModel(
       title: 'Symptoms tracker',
@@ -31,24 +31,32 @@ class HomeRepository {
 
   List<MedicationData> get medications => List.generate(
     3,
-    (_) => const MedicationData(
+    (_) => MedicationData(
       title: 'Vitamin D3 + K2',
-      detail: '2 Times left  .  Next 8:00 AM',
+      subtitle01: '2 Times left',
+      subtitle02: 'Next 8:00 AM',
+      iconPath: Assets.images.medichine.keyName,
     ),
   );
 
-  List<AppointmentData> get appointments => const [
+  List<AppointmentData> get appointments => [
     AppointmentData(
-      doctorName: 'Dr. Sarah Chen',
-      schedule: 'Aug 3, 2026  .  9:30 AM',
+      title: 'Dr. Sarah Chen',
+      subtitle01: 'Aug 3, 2026  .  9:30 AM',
+      subtitle02: '',
+      iconPath: Assets.images.calenderChek.keyName,
     ),
     AppointmentData(
-      doctorName: 'Dr. Marcus Rivera',
-      schedule: 'Aug 5, 2026  .  11:00 AM',
+      title: 'Dr. Marcus Rivera',
+      subtitle01: 'Aug 5, 2026  .  11:00 AM',
+      subtitle02: '',
+      iconPath: Assets.images.calenderChek.keyName,
     ),
     AppointmentData(
-      doctorName: 'Dr. Aisha Patel',
-      schedule: 'Aug 8, 2026  .  3:45 PM',
+      title: 'Dr. Aisha Patel',
+      subtitle01: 'Aug 8, 2026  .  3:45 PM',
+      subtitle02: '',
+      iconPath: Assets.images.calenderChek.keyName,
     ),
   ];
 

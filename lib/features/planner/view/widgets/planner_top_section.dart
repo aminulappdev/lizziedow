@@ -36,7 +36,7 @@ class PlannerTopSection extends StatelessWidget {
     }
 
     if (state.selectedTopFilterIndex == 3) {
-      return const CostSection();
+      return CostSection(state: state);
     }
 
     return CalendarSection(

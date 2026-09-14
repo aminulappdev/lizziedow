@@ -3,18 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/gen/assets.gen.dart';
 
-class MedicationTile extends StatelessWidget {
-  const MedicationTile({
+class CustomTile extends StatelessWidget {
+  const CustomTile({
     super.key,
     required this.title,
-    required this.detail,
+    required this.subtitle01,
+    required this.subtitle02,
     required this.showDivider,
+    required this.iconPath,
+    this.trailingWidget,
   });
 
   final String title;
-  final String detail;
+  final String subtitle01;
+  final String subtitle02;
+  final String iconPath;
+  final Widget? trailingWidget;
   final bool showDivider;
 
   @override
@@ -40,7 +45,7 @@ class MedicationTile extends StatelessWidget {
             ),
             child: Center(
               child: CrashSafeImage(
-                Assets.images.medichine.keyName,
+                iconPath,
                 width: 18.w(context),
                 height: 18.h(context),
                 color: LightThemeColors.darkBrown,
@@ -63,25 +68,46 @@ class MedicationTile extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 2.h(context)),
-                Text(
-                  detail,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: MyFonts.dmSans.copyWith(
-                    color: const Color(0xFF8E8278),
-                    fontSize: 10.5.sp(context),
-                    fontWeight: FontWeight.w700,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      subtitle01,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: MyFonts.dmSans.copyWith(
+                        color: const Color(0xFF8E8278),
+                        fontSize: 10.5.sp(context),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(width: 2.w(context)),
+                    Text(
+                      ' . ',
+                      style: MyFonts.dmSans.copyWith(
+                        color: const Color(0xFF8E8278),
+                        fontSize: 10.5.sp(context),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(width: 2.w(context)),
+
+                    Text(
+                      subtitle02,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: MyFonts.dmSans.copyWith(
+                        color: const Color(0xFF8E8278),
+                        fontSize: 10.5.sp(context),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
           SizedBox(width: 8.w(context)),
-          Icon(
-            Icons.more_horiz,
-            color: LightThemeColors.darkBrown,
-            size: 24.sp(context),
-          ),
+          ?trailingWidget,
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:lizziedow/features/planner/model/planner_model.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class PlannerRepository {
   const PlannerRepository();
@@ -87,33 +88,45 @@ class PlannerRepository {
     PlannerCalendarDay(day: 31),
   ];
 
-  List<PlannerAppointmentData> get appointments => const [
+  List<PlannerAppointmentData> get appointments => [
     PlannerAppointmentData(
-      doctorName: 'Dr. Sarah Chen',
-      schedule: 'Aug 3, 2026  .  9:30 AM',
+      title: 'Dr. Sarah Chen',
+      subtitle01: 'Aug 04, 2026',
+      subtitle02: '9:30 AM',
+      iconPath: Assets.images.calenderChek.keyName,
     ),
     PlannerAppointmentData(
-      doctorName: 'Dr. Sarah Chen',
-      schedule: 'Aug 3, 2026  .  9:30 AM',
+      title: 'Dr. Alex Chen',
+      subtitle01: 'Aug 05, 2026',
+      subtitle02: '10:00 AM',
+      iconPath: Assets.images.calenderChek.keyName,
     ),
     PlannerAppointmentData(
-      doctorName: 'Dr. Sarah Chen',
-      schedule: 'Aug 3, 2026  .  9:30 AM',
+      title: 'Dr. John Smith',
+      subtitle01: 'Aug 08, 2026',
+      subtitle02: '2:00 PM',
+      iconPath: Assets.images.calenderChek.keyName,
     ),
   ];
 
-  List<PlannerMedicationData> get medications => const [
+  List<PlannerMedicationData> get medications => [
     PlannerMedicationData(
-      title: 'Vitamin D3 + K2',
-      detail: '2 Times left  .  Next 8:00 AM',
+      title: 'Vitamin B12 + K2',
+      subtitle01: '3 Times left',
+      subtitle02: 'Next 10:00 AM',
+      iconPath: Assets.images.medichine.keyName,
+    ),
+    PlannerMedicationData(
+      title: 'Vitamin E5 + K2',
+      subtitle01: '1 Times left',
+      subtitle02: 'Next 9:00 AM',
+      iconPath: Assets.images.medichine.keyName,
     ),
     PlannerMedicationData(
       title: 'Vitamin D3 + K2',
-      detail: '2 Times left  .  Next 8:00 AM',
-    ),
-    PlannerMedicationData(
-      title: 'Vitamin D3 + K2',
-      detail: '2 Times left  .  Next 8:00 AM',
+      subtitle01: '2 Times left',
+      subtitle02: 'Next 8:00 AM',
+      iconPath: Assets.images.medichine.keyName,
     ),
   ];
 
@@ -123,12 +136,12 @@ class PlannerRepository {
       description: 'Lorem ipsum dolor sit amet consectetur.',
     ),
     PlannerJournalData(
-      title: "Today I've Felt pain",
-      description: 'Lorem ipsum dolor sit amet consectetur.',
+      title: "Tomorrow I've Felt discomfort",
+      description: 'Mauris non tempor quam, et lacinia sapien.',
     ),
     PlannerJournalData(
-      title: "Today I've Felt pain",
-      description: 'Lorem ipsum dolor sit amet consectetur.',
+      title: "Yesterday I've Felt happy",
+      description: 'Pellentesque habitant morbi tristique senectus et netus.',
     ),
   ];
 
@@ -136,16 +149,10 @@ class PlannerRepository {
     PlannerChecklistData(
       title: 'Schedule initial consultation with fertility clinic',
     ),
-    
-    PlannerChecklistData(
-      title: 'Virology screening (both partners)',
-    ),
-    PlannerChecklistData(
-      title: 'Saline sonogram / HSG to check uterus',
-    ),
-    PlannerChecklistData(
-      title: 'Review and sign IVF consent forms',
-    ),
+
+    PlannerChecklistData(title: 'Virology screening (both partners)'),
+    PlannerChecklistData(title: 'Saline sonogram / HSG to check uterus'),
+    PlannerChecklistData(title: 'Review and sign IVF consent forms'),
   ];
 
   List<PlannerTrackerMedicineData> get trackerMedicines => const [

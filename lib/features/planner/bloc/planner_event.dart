@@ -46,3 +46,12 @@ class PlannerTrackerFilterChangedEvent extends PlannerEvent {
   @override
   List<Object?> get props => [index];
 }
+
+class PlannerCostAlreadyPaidChangedEvent extends PlannerEvent {
+  const PlannerCostAlreadyPaidChangedEvent(this.isAlreadyPaid);
+
+  final bool isAlreadyPaid;
+
+  @override
+  List<Object?> get props => [isAlreadyPaid];
+}

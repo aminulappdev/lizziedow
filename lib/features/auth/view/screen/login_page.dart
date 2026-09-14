@@ -8,7 +8,7 @@ import 'package:lizziedow/app/utils/validator_services.dart';
 import 'package:lizziedow/features/auth/bloc/auth_bloc.dart';
 import 'package:lizziedow/features/auth/bloc/auth_event.dart';
 import 'package:lizziedow/features/auth/bloc/auth_state.dart';
-import 'package:lizziedow/features/auth/view/widgets/custom_text_field.dart';
+import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/auth/view/widgets/have_account.dart';
 import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';

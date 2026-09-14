@@ -16,39 +16,41 @@ class PlannerCalendarDay {
 
 class PlannerAppointmentData {
   const PlannerAppointmentData({
-    required this.doctorName,
-    required this.schedule,
+    required this.title,
+    required this.subtitle01,
+    required this.subtitle02,
+    required this.iconPath,
   });
 
-  final String doctorName;
-  final String schedule;
+  final String title;
+  final String subtitle01;
+  final String subtitle02;
+  final String iconPath;
 }
 
 class PlannerMedicationData {
   const PlannerMedicationData({
     required this.title,
-    required this.detail,
+    required this.subtitle01,
+    required this.subtitle02,
+    required this.iconPath,
   });
 
   final String title;
-  final String detail;
+  final String subtitle01;
+  final String subtitle02;
+  final String iconPath;
 }
 
 class PlannerJournalData {
-  const PlannerJournalData({
-    required this.title,
-    required this.description,
-  });
+  const PlannerJournalData({required this.title, required this.description});
 
   final String title;
   final String description;
 }
 
 class PlannerChecklistData {
-  const PlannerChecklistData({
-    required this.title,
-    this.isCompleted = false,
-  });
+  const PlannerChecklistData({required this.title, this.isCompleted = false});
 
   final String title;
   final bool isCompleted;

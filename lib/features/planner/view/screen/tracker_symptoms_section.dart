@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lizziedow/features/homescreen/view/widgets/symptom_log_panel.dart';
+import 'package:lizziedow/features/homescreen/view/screen/symptom_log_section.dart';
 
 class TrackerSymptomsSection extends StatelessWidget {
   const TrackerSymptomsSection({

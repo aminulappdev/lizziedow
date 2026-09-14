@@ -7,7 +7,7 @@ import 'package:lizziedow/features/planner/model/planner_model.dart';
 class PlannerCalendarCard extends StatelessWidget {
   const PlannerCalendarCard({
     super.key,
-    required this.days,
+    required this.days, 
   });
 
   final List<PlannerCalendarDay> days;

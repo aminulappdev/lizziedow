@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/features/homescreen/view/widgets/appointment_tile.dart';
+import 'package:lizziedow/core/widgets/custom_tile.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 import 'package:lizziedow/features/planner/model/planner_model.dart';
 
@@ -45,10 +45,13 @@ class TrackerAppointmentsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
           child: Column(
             children: List.generate(appointments.length, (index) {
-              return AppointmentTile(
-                doctorName: appointments[index].doctorName,
-                schedule: appointments[index].schedule,
+              return CustomTile(
+                title: appointments[index].title,
+                subtitle01: appointments[index].subtitle01,
+                subtitle02: appointments[index].subtitle02,
                 showDivider: index != appointments.length - 1,
+                iconPath: appointments[index].iconPath,
+                trailingWidget: Icon(Icons.more_vert, size: 20.sp(context)),
               );
             }),
           ),
