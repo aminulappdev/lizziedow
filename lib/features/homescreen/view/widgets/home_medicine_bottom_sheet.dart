@@ -6,22 +6,26 @@ import 'package:lizziedow/core/widgets/custom_dropdown_field.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 
-class ChecklistItemBottomSheet extends StatefulWidget {
-  const ChecklistItemBottomSheet({super.key});
+class HomeMedicineBottomSheet extends StatefulWidget {
+  const HomeMedicineBottomSheet({super.key});
 
   @override
-  State<ChecklistItemBottomSheet> createState() =>
-      _ChecklistItemBottomSheetState();
+  State<HomeMedicineBottomSheet> createState() =>
+      _HomeMedicineBottomSheetState();
 }
 
-class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _dateController = TextEditingController();
+class _HomeMedicineBottomSheetState extends State<HomeMedicineBottomSheet> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _doseController = TextEditingController();
+  final TextEditingController _startDateController = TextEditingController();
+  final TextEditingController _endDateController = TextEditingController();
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _dateController.dispose();
+    _nameController.dispose();
+    _doseController.dispose();
+    _startDateController.dispose();
+    _endDateController.dispose();
     super.dispose();
   }
 
@@ -44,7 +48,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Add new item',
+                'Add new medicine',
                 style: MyFonts.dmSans.copyWith(
                   color: LightThemeColors.darkBrown,
                   fontSize: 24.sp(context),
@@ -53,7 +57,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
               ),
               SizedBox(height: 8.h(context)),
               Text(
-                'Add new item to your checklist category',
+                'Add new medicine to your tracker',
                 style: MyFonts.dmSans.copyWith(
                   color: const Color(0xFF9A8E86),
                   fontSize: 11.sp(context),
@@ -62,31 +66,76 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
               ),
               SizedBox(height: 24.h(context)),
               CustomTextField(
-                controller: _titleController,
-                hintText: 'Enter Title',
+                controller: _nameController,
+                hintText: 'Enter Name',
                 borderRadius: 8.r(context),
                 borderSide: const BorderSide(color: Color(0xFFE8DED4)),
                 enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
                 focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
-              ), 
+              ),
+              SizedBox(height: 14.h(context)),
+              CustomTextField(
+                controller: _doseController,
+                hintText: 'Enter Dose',
+                borderRadius: 8.r(context),
+                borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
+              ),
               SizedBox(height: 14.h(context)),
               Row(
                 children: [
                   const Expanded(
                     child: CustomDropdownField(
-                      hintText: 'Category',
-                      items: ['Medical', 'Medication', 'Appointment', 'Other'],
+                      hintText: 'Frequency',
+                      items: ['Daily', 'Weekly', 'Monthly', 'As needed'],
+                    ),
+                  ),
+                  SizedBox(width: 12.w(context)),
+                  const Expanded(
+                    child: CustomDropdownField(
+                      hintText: 'Type',
+                      items: ['Tablet', 'Capsule', 'Injection', 'Syrup'],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 14.h(context)),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      controller: _startDateController,
+                      hintText: 'Start date',
+                      readOnly: true,
+                      onTap: () => _pickDate(_startDateController),
+                      suffixIcon: GestureDetector(
+                        onTap: () => _pickDate(_startDateController),
+                        child: Icon(
+                          Icons.calendar_month,
+                          color: LightThemeColors.darkBrown,
+                          size: 16.sp(context),
+                        ),
+                      ),
+                      borderRadius: 8.r(context),
+                      borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                      enabledBorderSide: const BorderSide(
+                        color: Color(0xFFE8DED4),
+                      ),
+                      focusedBorderSide: const BorderSide(
+                        color: Color(0xFFB9A99B),
+                      ),
                     ),
                   ),
                   SizedBox(width: 12.w(context)),
                   Expanded(
                     child: CustomTextField(
-                      controller: _dateController,
-                      hintText: 'Enter date',
+                      controller: _endDateController,
+                      hintText: 'End date',
                       readOnly: true,
-                      onTap: _pickDate,
+                      onTap: () => _pickDate(_endDateController),
                       suffixIcon: GestureDetector(
-                        onTap: _pickDate,
+                        onTap: () => _pickDate(_endDateController),
                         child: Icon(
                           Icons.calendar_month,
                           color: LightThemeColors.darkBrown,
@@ -107,7 +156,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
               ),
               SizedBox(height: 18.h(context)),
               CustomButton(
-                text: 'Update Item',
+                text: 'Update Medicine',
                 onPressed: () => Navigator.pop(context),
                 borderRadius: 8.r(context),
                 height: 54.h(context),
@@ -125,7 +174,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
-                  'Cancel Item',
+                  'Cancel Medicine',
                   style: MyFonts.dmSans.copyWith(
                     fontSize: 13.sp(context),
                     fontWeight: FontWeight.w800,
@@ -139,7 +188,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
     );
   }
 
-  Future<void> _pickDate() async {
+  Future<void> _pickDate(TextEditingController controller) async {
     final now = DateTime.now();
     final pickedDate = await showDatePicker(
       context: context,
@@ -152,7 +201,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
       return;
     }
 
-    _dateController.text = _formatDate(pickedDate);
+    controller.text = _formatDate(pickedDate);
   }
 
   String _formatDate(DateTime date) {

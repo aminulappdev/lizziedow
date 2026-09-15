@@ -17,6 +17,7 @@ class PlannerState extends Equatable {
     this.journals = const [],
     this.checklistItems = const [],
     this.trackerMedicines = const [],
+    this.trackerSupplements = const [],
     this.trackerMoods = const [],
     this.trackerSymptoms = const [],
     this.isCostAlreadyPaid = false,
@@ -36,6 +37,7 @@ class PlannerState extends Equatable {
   final List<PlannerJournalData> journals;
   final List<PlannerChecklistData> checklistItems;
   final List<PlannerTrackerMedicineData> trackerMedicines;
+  final List<PlannerTrackerSupplementData> trackerSupplements;
   final List<String> trackerMoods;
   final List<String> trackerSymptoms;
   final bool isCostAlreadyPaid;
@@ -55,6 +57,7 @@ class PlannerState extends Equatable {
     List<PlannerJournalData>? journals,
     List<PlannerChecklistData>? checklistItems,
     List<PlannerTrackerMedicineData>? trackerMedicines,
+    List<PlannerTrackerSupplementData>? trackerSupplements,
     List<String>? trackerMoods,
     List<String>? trackerSymptoms,
     bool? isCostAlreadyPaid,
@@ -78,6 +81,7 @@ class PlannerState extends Equatable {
       journals: journals ?? this.journals,
       checklistItems: checklistItems ?? this.checklistItems,
       trackerMedicines: trackerMedicines ?? this.trackerMedicines,
+      trackerSupplements: trackerSupplements ?? this.trackerSupplements,
       trackerMoods: trackerMoods ?? this.trackerMoods,
       trackerSymptoms: trackerSymptoms ?? this.trackerSymptoms,
       isCostAlreadyPaid: isCostAlreadyPaid ?? this.isCostAlreadyPaid,
@@ -100,6 +104,7 @@ class PlannerState extends Equatable {
     journals,
     checklistItems,
     trackerMedicines,
+    trackerSupplements,
     trackerMoods,
     trackerSymptoms,
     isCostAlreadyPaid,

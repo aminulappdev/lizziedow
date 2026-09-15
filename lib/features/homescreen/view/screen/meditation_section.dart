@@ -3,6 +3,7 @@ import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/features/homescreen/model/quick_action_data_model.dart';
 import 'package:lizziedow/core/widgets/custom_tile.dart';
+import 'package:lizziedow/features/homescreen/view/widgets/home_medicine_bottom_sheet.dart';
 import 'package:lizziedow/core/widgets/section_header.dart';
 
 class MedicationsContent extends StatelessWidget {
@@ -30,7 +31,7 @@ class MedicationsContent extends StatelessWidget {
               Icon(Icons.add, size: 17.sp(context)),
             ],
           ),
-          onTap: () {},
+          onTap: () => _showAddMedicineBottomSheet(context),
         ),
         SizedBox(height: 8.h(context)),
         Padding(
@@ -49,6 +50,21 @@ class MedicationsContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _showAddMedicineBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const HomeMedicineBottomSheet(),
     );
   }
 }

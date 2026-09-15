@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
+import 'package:lizziedow/features/homescreen/view/widgets/mood_history_bottom_sheet.dart';
 import 'package:lizziedow/features/homescreen/view/widgets/option_card.dart';
+import 'package:lizziedow/features/homescreen/view/widgets/symptom_history_bottom_sheet.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 
 class SymptomLogPanel extends StatelessWidget {
@@ -27,12 +29,16 @@ class SymptomLogPanel extends StatelessWidget {
             icon: Icons.favorite_border,
             title: "Today's mood",
             options: moods,
+            trailingText: 'View History',
+            onTrailingTap: () => _showMoodHistoryBottomSheet(context),
           ),
           SizedBox(height: 14.h(context)),
           OptionCard(
             icon: Icons.calendar_today_outlined,
             title: 'Symptoms',
             options: symptoms,
+            trailingText: 'View History',
+            onTrailingTap: () => _showSymptomHistoryBottomSheet(context),
           ),
           SizedBox(height: 14.h(context)),
           // Container(
@@ -67,6 +73,36 @@ class SymptomLogPanel extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showMoodHistoryBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const MoodHistoryBottomSheet(),
+    );
+  }
+
+  void _showSymptomHistoryBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const SymptomHistoryBottomSheet(),
     );
   }
 }

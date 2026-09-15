@@ -6,6 +6,7 @@ import 'package:lizziedow/core/widgets/section_header.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 import 'package:lizziedow/features/planner/bloc/planner_state.dart';
 import 'package:lizziedow/features/planner/view/widgets/check_list_header.dart';
+import 'package:lizziedow/features/planner/view/widgets/checklist_item_bottom_sheet.dart';
 import 'package:lizziedow/features/planner/view/widgets/checklist_item_tile.dart';
 import 'package:lizziedow/features/planner/view/widgets/checklist_progress.dart';
 import 'package:lizziedow/features/planner/view/widgets/planner_filter_chip_row.dart';
@@ -71,11 +72,26 @@ class ChecklistSection extends StatelessWidget {
             child: CustomButton(
               text: 'Add Item',
               borderRadius: 12.r(context),
-              onPressed: () {},
+              onPressed: () => _showAddItemBottomSheet(context),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  void _showAddItemBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const ChecklistItemBottomSheet(),
     );
   }
 }

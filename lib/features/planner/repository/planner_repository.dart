@@ -173,4 +173,24 @@ class PlannerRepository {
       detail: '225 IU  .  Injection',
     ),
   ];
+
+  List<PlannerTrackerSupplementData> get trackerSupplements => const [
+    PlannerTrackerSupplementData(
+      title: 'Omega 3',
+      detail: '1000 mg  .  Capsule',
+    ),
+    PlannerTrackerSupplementData(
+      title: 'CoQ10',
+      detail: '200 mg  .  Capsule',
+      isTakenToday: true,
+    ),
+    PlannerTrackerSupplementData(
+      title: 'Folic Acid',
+      detail: '400 mcg  .  Tablet',
+    ),
+    PlannerTrackerSupplementData(
+      title: 'Prenatal Vitamin',
+      detail: '1 Tablet  .  Daily',
+    ),
+  ];
 }

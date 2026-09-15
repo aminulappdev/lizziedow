@@ -2,26 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/core/widgets/custom_dropdown_field.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 
-class ChecklistItemBottomSheet extends StatefulWidget {
-  const ChecklistItemBottomSheet({super.key});
+class PlannerJournalBottomSheet extends StatefulWidget {
+  const PlannerJournalBottomSheet({super.key});
 
   @override
-  State<ChecklistItemBottomSheet> createState() =>
-      _ChecklistItemBottomSheetState();
+  State<PlannerJournalBottomSheet> createState() =>
+      _PlannerJournalBottomSheetState();
 }
 
-class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
+class _PlannerJournalBottomSheetState extends State<PlannerJournalBottomSheet> {
   final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   @override
   void dispose() {
     _titleController.dispose();
-    _dateController.dispose();
+    _descriptionController.dispose();
     super.dispose();
   }
 
@@ -38,13 +37,13 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
             left: 20.w(context),
             right: 20.w(context),
             top: 28.h(context),
-            bottom: 16.h(context),
+            bottom: 14.h(context),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Add new item',
+                'Add Journal',
                 style: MyFonts.dmSans.copyWith(
                   color: LightThemeColors.darkBrown,
                   fontSize: 24.sp(context),
@@ -53,61 +52,36 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
               ),
               SizedBox(height: 8.h(context)),
               Text(
-                'Add new item to your checklist category',
+                'Capture your thoughts and feelings',
+                textAlign: TextAlign.center,
                 style: MyFonts.dmSans.copyWith(
-                  color: const Color(0xFF9A8E86),
-                  fontSize: 11.sp(context),
+                  color: const Color(0xFF8F837A),
+                  fontSize: 10.sp(context),
                   fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(height: 24.h(context)),
               CustomTextField(
                 controller: _titleController,
-                hintText: 'Enter Title',
+                hintText: 'Enter Journal title',
                 borderRadius: 8.r(context),
                 borderSide: const BorderSide(color: Color(0xFFE8DED4)),
                 enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
                 focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
-              ), 
+              ),
               SizedBox(height: 14.h(context)),
-              Row(
-                children: [
-                  const Expanded(
-                    child: CustomDropdownField(
-                      hintText: 'Category',
-                      items: ['Medical', 'Medication', 'Appointment', 'Other'],
-                    ),
-                  ),
-                  SizedBox(width: 12.w(context)),
-                  Expanded(
-                    child: CustomTextField(
-                      controller: _dateController,
-                      hintText: 'Enter date',
-                      readOnly: true,
-                      onTap: _pickDate,
-                      suffixIcon: GestureDetector(
-                        onTap: _pickDate,
-                        child: Icon(
-                          Icons.calendar_month,
-                          color: LightThemeColors.darkBrown,
-                          size: 16.sp(context),
-                        ),
-                      ),
-                      borderRadius: 8.r(context),
-                      borderSide: const BorderSide(color: Color(0xFFE8DED4)),
-                      enabledBorderSide: const BorderSide(
-                        color: Color(0xFFE8DED4),
-                      ),
-                      focusedBorderSide: const BorderSide(
-                        color: Color(0xFFB9A99B),
-                      ),
-                    ),
-                  ),
-                ],
+              CustomTextField(
+                controller: _descriptionController,
+                hintText: 'Write description here.....',
+                maxLines: 7,
+                borderRadius: 8.r(context),
+                borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
               ),
               SizedBox(height: 18.h(context)),
               CustomButton(
-                text: 'Update Item',
+                text: 'Add Journal',
                 onPressed: () => Navigator.pop(context),
                 borderRadius: 8.r(context),
                 height: 54.h(context),
@@ -125,7 +99,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
-                  'Cancel Item',
+                  'Discard',
                   style: MyFonts.dmSans.copyWith(
                     fontSize: 13.sp(context),
                     fontWeight: FontWeight.w800,
@@ -137,27 +111,5 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
         ),
       ),
     );
-  }
-
-  Future<void> _pickDate() async {
-    final now = DateTime.now();
-    final pickedDate = await showDatePicker(
-      context: context,
-      initialDate: now,
-      firstDate: DateTime(now.year - 5),
-      lastDate: DateTime(now.year + 5),
-    );
-
-    if (pickedDate == null || !mounted) {
-      return;
-    }
-
-    _dateController.text = _formatDate(pickedDate);
-  }
-
-  String _formatDate(DateTime date) {
-    final day = date.day.toString().padLeft(2, '0');
-    final month = date.month.toString().padLeft(2, '0');
-    return '$day/$month/${date.year}';
   }
 }

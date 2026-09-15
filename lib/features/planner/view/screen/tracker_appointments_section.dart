@@ -5,6 +5,7 @@ import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/core/widgets/custom_tile.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 import 'package:lizziedow/features/planner/model/planner_model.dart';
+import 'package:lizziedow/features/planner/view/widgets/planner_appointment_bottom_sheet.dart';
 
 class TrackerAppointmentsSection extends StatelessWidget {
   const TrackerAppointmentsSection({super.key, required this.appointments});
@@ -57,8 +58,26 @@ class TrackerAppointmentsSection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 244.h(context)),
-        CustomButton(text: 'Add Appointment', onPressed: () {}),
+        CustomButton(
+          text: 'Add Appointment',
+          onPressed: () => _showAddAppointmentBottomSheet(context),
+        ),
       ],
+    );
+  }
+
+  void _showAddAppointmentBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const PlannerAppointmentBottomSheet(),
     );
   }
 }

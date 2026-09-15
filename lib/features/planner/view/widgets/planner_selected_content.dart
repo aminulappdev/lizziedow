@@ -7,14 +7,17 @@ import 'package:lizziedow/core/widgets/section_header.dart';
 import 'package:lizziedow/features/planner/bloc/planner_state.dart';
 import 'package:lizziedow/features/planner/model/planner_model.dart';
 import 'package:lizziedow/features/planner/view/widgets/journal_tile.dart';
+import 'package:lizziedow/features/planner/view/widgets/planner_appointment_bottom_sheet.dart';
+import 'package:lizziedow/features/planner/view/widgets/planner_journal_bottom_sheet.dart';
+import 'package:lizziedow/features/planner/view/widgets/tracker_medicine_bottom_sheet.dart';
 
 class PlannerSelectedContent extends StatelessWidget {
   const PlannerSelectedContent({super.key, required this.state});
 
   final PlannerState state;
- 
+
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     if (state.selectedSectionFilterIndex == 1) {
       return _PlannerMedicationsContent(medications: state.medications);
     }
@@ -46,7 +49,7 @@ class _PlannerAppointmentsContent extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          onTap: () {},
+          onTap: () => _showAddAppointmentBottomSheet(context),
         ),
         SizedBox(height: 8.h(context)),
         Padding(
@@ -65,6 +68,21 @@ class _PlannerAppointmentsContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _showAddAppointmentBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const PlannerAppointmentBottomSheet(),
     );
   }
 }
@@ -88,7 +106,7 @@ class _PlannerMedicationsContent extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          onTap: () {},
+          onTap: () => _showAddMedicineBottomSheet(context),
         ),
         SizedBox(height: 8.h(context)),
         Padding(
@@ -106,6 +124,21 @@ class _PlannerMedicationsContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _showAddMedicineBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const TrackerMedicineBottomSheet(),
     );
   }
 }
@@ -129,7 +162,7 @@ class _PlannerJournalsContent extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          onTap: () {},
+          onTap: () => _showAddJournalBottomSheet(context),
         ),
         SizedBox(height: 8.h(context)),
         Padding(
@@ -145,6 +178,21 @@ class _PlannerJournalsContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _showAddJournalBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (_) => const PlannerJournalBottomSheet(),
     );
   }
 }

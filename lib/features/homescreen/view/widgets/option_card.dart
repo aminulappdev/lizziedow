@@ -9,11 +9,15 @@ class OptionCard extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.options,
+    this.trailingText,
+    this.onTrailingTap,
   });
 
   final IconData icon;
   final String title;
   final List<String> options;
+  final String? trailingText;
+  final VoidCallback? onTrailingTap;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +47,26 @@ class OptionCard extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                 ),
               ),
+              const Spacer(),
+              if (trailingText != null)
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: onTrailingTap,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 4.w(context),
+                      vertical: 4.h(context),
+                    ),
+                    child: Text(
+                      trailingText!,
+                      style: MyFonts.dmSans.copyWith(
+                        color: LightThemeColors.darkBrown,
+                        fontSize: 10.sp(context),
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
           SizedBox(height: 16.h(context)),

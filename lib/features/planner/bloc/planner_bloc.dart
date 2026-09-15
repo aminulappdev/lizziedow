@@ -33,6 +33,7 @@ class PlannerBloc extends Bloc<PlannerEvent, PlannerState> {
         journals: _plannerRepository.journals,
         checklistItems: _plannerRepository.checklistItems,
         trackerMedicines: _plannerRepository.trackerMedicines,
+        trackerSupplements: _plannerRepository.trackerSupplements,
         trackerMoods: _plannerRepository.trackerMoods,
         trackerSymptoms: _plannerRepository.trackerSymptoms,
       ),

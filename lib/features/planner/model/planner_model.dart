@@ -67,3 +67,15 @@ class PlannerTrackerMedicineData {
   final String detail;
   final bool isTakenToday;
 }
+
+class PlannerTrackerSupplementData {
+  const PlannerTrackerSupplementData({
+    required this.title,
+    required this.detail,
+    this.isTakenToday = false,
+  });
+
+  final String title;
+  final String detail;
+  final bool isTakenToday;
+}

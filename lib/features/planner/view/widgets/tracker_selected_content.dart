@@ -19,7 +19,7 @@ class TrackerSelectedContent extends StatelessWidget {
       case 1:
         return TrackerMedicationSection(medicines: state.trackerMedicines);
       case 2:
-        return const TrackerSupplementsSection();
+        return TrackerSupplementsSection(supplements: state.trackerSupplements);
       case 3:
         return TrackerAppointmentsSection(appointments: state.appointments);
       case 4:

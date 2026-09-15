@@ -2,26 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/core/widgets/custom_dropdown_field.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 
-class ChecklistItemBottomSheet extends StatefulWidget {
-  const ChecklistItemBottomSheet({super.key});
+class PlannerAppointmentBottomSheet extends StatefulWidget {
+  const PlannerAppointmentBottomSheet({super.key});
 
   @override
-  State<ChecklistItemBottomSheet> createState() =>
-      _ChecklistItemBottomSheetState();
+  State<PlannerAppointmentBottomSheet> createState() =>
+      _PlannerAppointmentBottomSheetState();
 }
 
-class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
-  final TextEditingController _titleController = TextEditingController();
+class _PlannerAppointmentBottomSheetState
+    extends State<PlannerAppointmentBottomSheet> {
+  final TextEditingController _doctorController = TextEditingController();
+  final TextEditingController _timeController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   @override
   void dispose() {
-    _titleController.dispose();
+    _doctorController.dispose();
+    _timeController.dispose();
     _dateController.dispose();
+    _descriptionController.dispose();
     super.dispose();
   }
 
@@ -37,14 +41,14 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
           padding: EdgeInsets.only(
             left: 20.w(context),
             right: 20.w(context),
-            top: 28.h(context),
-            bottom: 16.h(context),
+            top: 26.h(context),
+            bottom: 14.h(context),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Add new item',
+                'Add Appointment',
                 style: MyFonts.dmSans.copyWith(
                   color: LightThemeColors.darkBrown,
                   fontSize: 24.sp(context),
@@ -53,29 +57,48 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
               ),
               SizedBox(height: 8.h(context)),
               Text(
-                'Add new item to your checklist category',
+                'Add new appointment',
+                textAlign: TextAlign.center,
                 style: MyFonts.dmSans.copyWith(
-                  color: const Color(0xFF9A8E86),
-                  fontSize: 11.sp(context),
+                  color: const Color(0xFF8F837A),
+                  fontSize: 10.sp(context),
                   fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(height: 24.h(context)),
               CustomTextField(
-                controller: _titleController,
-                hintText: 'Enter Title',
+                controller: _doctorController,
+                hintText: 'Enter Doctor name or clinic',
                 borderRadius: 8.r(context),
                 borderSide: const BorderSide(color: Color(0xFFE8DED4)),
                 enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
                 focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
-              ), 
+              ),
               SizedBox(height: 14.h(context)),
               Row(
                 children: [
-                  const Expanded(
-                    child: CustomDropdownField(
-                      hintText: 'Category',
-                      items: ['Medical', 'Medication', 'Appointment', 'Other'],
+                  Expanded(
+                    child: CustomTextField(
+                      controller: _timeController,
+                      hintText: 'Enter date',
+                      readOnly: true,
+                      onTap: () => _pickDate(_timeController),
+                      suffixIcon: GestureDetector(
+                        onTap: () => _pickDate(_timeController),
+                        child: Icon(
+                          Icons.schedule,
+                          color: LightThemeColors.darkBrown,
+                          size: 16.sp(context),
+                        ),
+                      ),
+                      borderRadius: 8.r(context),
+                      borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                      enabledBorderSide: const BorderSide(
+                        color: Color(0xFFE8DED4),
+                      ),
+                      focusedBorderSide: const BorderSide(
+                        color: Color(0xFFB9A99B),
+                      ),
                     ),
                   ),
                   SizedBox(width: 12.w(context)),
@@ -84,9 +107,9 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
                       controller: _dateController,
                       hintText: 'Enter date',
                       readOnly: true,
-                      onTap: _pickDate,
+                      onTap: () => _pickDate(_dateController),
                       suffixIcon: GestureDetector(
-                        onTap: _pickDate,
+                        onTap: () => _pickDate(_dateController),
                         child: Icon(
                           Icons.calendar_month,
                           color: LightThemeColors.darkBrown,
@@ -105,9 +128,19 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
                   ),
                 ],
               ),
+              SizedBox(height: 14.h(context)),
+              CustomTextField(
+                controller: _descriptionController,
+                hintText: 'Write description here.....',
+                maxLines: 7,
+                borderRadius: 8.r(context),
+                borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
+              ),
               SizedBox(height: 18.h(context)),
               CustomButton(
-                text: 'Update Item',
+                text: 'Save Appointment',
                 onPressed: () => Navigator.pop(context),
                 borderRadius: 8.r(context),
                 height: 54.h(context),
@@ -139,7 +172,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
     );
   }
 
-  Future<void> _pickDate() async {
+  Future<void> _pickDate(TextEditingController controller) async {
     final now = DateTime.now();
     final pickedDate = await showDatePicker(
       context: context,
@@ -152,7 +185,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
       return;
     }
 
-    _dateController.text = _formatDate(pickedDate);
+    controller.text = _formatDate(pickedDate);
   }
 
   String _formatDate(DateTime date) {
