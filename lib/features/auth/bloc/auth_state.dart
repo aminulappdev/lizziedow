@@ -12,6 +12,9 @@ class AuthState extends Equatable {
     this.user,
     this.isPasswordVisible = false,
     this.isConfirmPasswordVisible = false,
+    this.hasCookieConsent = false,
+    this.hasExplicitConsent = false,
+    this.hasHealthDataConsent = false,
   });
 
   final String email;
@@ -21,6 +24,9 @@ class AuthState extends Equatable {
   final UserModel? user;
   final bool isPasswordVisible;
   final bool isConfirmPasswordVisible;
+  final bool hasCookieConsent;
+  final bool hasExplicitConsent;
+  final bool hasHealthDataConsent;
 
   AuthState copyWith({
     String? email,
@@ -30,6 +36,9 @@ class AuthState extends Equatable {
     UserModel? user,
     bool? isPasswordVisible,
     bool? isConfirmPasswordVisible,
+    bool? hasCookieConsent,
+    bool? hasExplicitConsent,
+    bool? hasHealthDataConsent,
   }) {
     return AuthState(
       email: email ?? this.email,
@@ -40,6 +49,10 @@ class AuthState extends Equatable {
       isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
       isConfirmPasswordVisible:
           isConfirmPasswordVisible ?? this.isConfirmPasswordVisible,
+      hasCookieConsent: hasCookieConsent ?? this.hasCookieConsent,
+      hasExplicitConsent: hasExplicitConsent ?? this.hasExplicitConsent,
+      hasHealthDataConsent:
+          hasHealthDataConsent ?? this.hasHealthDataConsent,
     );
   }
 
@@ -52,5 +65,8 @@ class AuthState extends Equatable {
         user,
         isPasswordVisible,
         isConfirmPasswordVisible,
+        hasCookieConsent,
+        hasExplicitConsent,
+        hasHealthDataConsent,
       ];
 }

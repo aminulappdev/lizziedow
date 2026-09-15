@@ -9,6 +9,7 @@ import 'package:lizziedow/features/auth/bloc/auth_bloc.dart';
 import 'package:lizziedow/features/auth/bloc/auth_event.dart';
 import 'package:lizziedow/features/auth/bloc/auth_state.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
+import 'package:lizziedow/features/auth/view/widgets/auth_consent_bottom_sheet.dart';
 import 'package:lizziedow/features/auth/view/widgets/have_account.dart';
 import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';
@@ -42,7 +43,34 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login() {
-    Navigator.pushReplacementNamed(context, RoutesName.homeScreen);
+   // if (_formKey.currentState?.validate() ?? false) {
+      _showConsentBottomSheet();
+   // }
+  }
+
+  void _showConsentBottomSheet() {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (bottomSheetContext) {
+        return BlocProvider.value(
+          value: context.read<AuthBloc>(),
+          child: AuthConsentBottomSheet(
+            onAccepted: () {
+              Navigator.pop(bottomSheetContext);
+              Navigator.pushReplacementNamed(context, RoutesName.homeScreen);
+            },
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -63,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(const SnackBar(content: Text('Login success')));
-            Navigator.pushNamed(context, RoutesName.homeScreen);
+            _showConsentBottomSheet();
           }
         },
         builder: (context, state) {

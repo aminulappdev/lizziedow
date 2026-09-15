@@ -14,6 +14,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthConfirmPasswordVisibilityToggled>(
       _onConfirmPasswordVisibilityToggled,
     );
+    on<AuthCookieConsentChanged>(_onCookieConsentChanged);
+    on<AuthExplicitConsentChanged>(_onExplicitConsentChanged);
+    on<AuthHealthDataConsentChanged>(_onHealthDataConsentChanged);
+    on<AuthAllConsentsAccepted>(_onAllConsentsAccepted);
   }
 
   final AuthRepository _authRepository;
@@ -46,6 +50,40 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(
       state.copyWith(
         isConfirmPasswordVisible: !state.isConfirmPasswordVisible,
+      ),
+    );
+  }
+
+  void _onCookieConsentChanged(
+    AuthCookieConsentChanged event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(state.copyWith(hasCookieConsent: event.value));
+  }
+
+  void _onExplicitConsentChanged(
+    AuthExplicitConsentChanged event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(state.copyWith(hasExplicitConsent: event.value));
+  }
+
+  void _onHealthDataConsentChanged(
+    AuthHealthDataConsentChanged event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(state.copyWith(hasHealthDataConsent: event.value));
+  }
+
+  void _onAllConsentsAccepted(
+    AuthAllConsentsAccepted event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        hasCookieConsent: true,
+        hasExplicitConsent: true,
+        hasHealthDataConsent: true,
       ),
     );
   }

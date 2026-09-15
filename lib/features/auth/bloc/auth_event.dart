@@ -36,3 +36,34 @@ class AuthPasswordVisibilityToggled extends AuthEvent {
 class AuthConfirmPasswordVisibilityToggled extends AuthEvent {
   const AuthConfirmPasswordVisibilityToggled();
 }
+
+class AuthCookieConsentChanged extends AuthEvent {
+  const AuthCookieConsentChanged(this.value);
+
+  final bool value;
+
+  @override
+  List<Object?> get props => [value];
+}
+
+class AuthExplicitConsentChanged extends AuthEvent {
+  const AuthExplicitConsentChanged(this.value);
+
+  final bool value;
+
+  @override
+  List<Object?> get props => [value];
+}
+
+class AuthHealthDataConsentChanged extends AuthEvent {
+  const AuthHealthDataConsentChanged(this.value);
+
+  final bool value;
+
+  @override
+  List<Object?> get props => [value];
+}
+
+class AuthAllConsentsAccepted extends AuthEvent {
+  const AuthAllConsentsAccepted();
+}

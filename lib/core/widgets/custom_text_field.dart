@@ -20,6 +20,10 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.readOnly = false,
+    this.borderSide,
+    this.enabledBorderSide,
+    this.focusedBorderSide,
+    this.borderRadius,
   });
 
   final TextEditingController controller;
@@ -37,6 +41,10 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool readOnly;
+  final BorderSide? borderSide;
+  final BorderSide? enabledBorderSide;
+  final BorderSide? focusedBorderSide;
+  final double? borderRadius;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -62,6 +70,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final radius = BorderRadius.circular(
+      widget.borderRadius ?? 10.r(context),
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -102,16 +114,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             prefixIcon: widget.prefixIcon,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r(context)),
-              borderSide: BorderSide.none,
+              borderRadius: radius,
+              borderSide: widget.borderSide ?? BorderSide.none,
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r(context)),
-              borderSide: BorderSide.none,
+              borderRadius: radius,
+              borderSide: widget.enabledBorderSide ?? BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r(context)),
-              borderSide: const BorderSide(color: Color(0xFF8B735F)),
+              borderRadius: radius,
+              borderSide:
+                  widget.focusedBorderSide ??
+                  const BorderSide(color: Color(0xFF8B735F)),
             ),
           ),
         ),
