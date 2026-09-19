@@ -70,7 +70,7 @@ class ChecklistSection extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
             child: CustomButton(
-              text: 'Add Item',
+              text: 'Add New Checklist Item',
               borderRadius: 12.r(context),
               onPressed: () => _showAddItemBottomSheet(context),
             ),

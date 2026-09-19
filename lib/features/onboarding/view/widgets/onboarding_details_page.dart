@@ -18,7 +18,7 @@ class OnboardingDetailsPage extends StatelessWidget {
 
   final List<OnboardingItem> cards;
   final int currentPage;
-  final int currentCard;
+  final int currentCard; 
   final PageController cardController;
 
   @override
@@ -26,20 +26,20 @@ class OnboardingDetailsPage extends StatelessWidget {
     return Column(
       children: [
 
-        SizedBox(height: 60.h(context)),
+        SizedBox(height: 50.h(context)),
         CrashSafeImage(
           Assets.images.logo.keyName,
           width: 160.w(context),
           height: 160.h(context),
         ),
-        SizedBox(height: 100.h(context)),
+        SizedBox(height: 80.h(context)),
         OnboardingCardsSlider(
           cards: cards,
           currentCard: currentCard,
           cardController: cardController,
         ),
         const Spacer(),
-        OnboardingPageDots(currentPage: currentPage),
+        OnboardingPageDots(currentPage: currentPage), 
         SizedBox(height: 18.h(context)),
         Text(
           'Feel more in control,\nevery day',
@@ -47,7 +47,7 @@ class OnboardingDetailsPage extends StatelessWidget {
           style: MyFonts.instrumentSerif.copyWith(
             fontSize: 36.sp(context),
             height: 0.9,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             color: const Color(0xFF403731),
           ),
         ),
@@ -56,12 +56,12 @@ class OnboardingDetailsPage extends StatelessWidget {
           'Simplify your fertility journey by bringing planning, tracking\nand budgeting together in one place',
           textAlign: TextAlign.center,
           style: MyFonts.dmSans.copyWith(
-            fontSize: 11.sp(context),
-            fontWeight: FontWeight.w500,
+            fontSize: 11.5.sp(context),
+            fontWeight: FontWeight.w600,
             color: const Color(0xFF7E6E63),
           ),
         ),
-        SizedBox(height: 24.h(context)),
+        SizedBox(height: 30.h(context)),
       ],
     );
   }

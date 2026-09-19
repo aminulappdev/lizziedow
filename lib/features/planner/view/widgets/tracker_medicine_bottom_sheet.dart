@@ -2,9 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/custom_dropdown_field.dart';
+import 'package:lizziedow/core/widgets/custom_text_field.dart';
+import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 
-class TrackerMedicineBottomSheet extends StatelessWidget {
+class TrackerMedicineBottomSheet extends StatefulWidget {
   const TrackerMedicineBottomSheet({super.key});
+
+  @override
+  State<TrackerMedicineBottomSheet> createState() =>
+      _TrackerMedicineBottomSheetState();
+}
+
+class _TrackerMedicineBottomSheetState
+    extends State<TrackerMedicineBottomSheet> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _doseController = TextEditingController();
+  final TextEditingController _startDateController = TextEditingController();
+  final TextEditingController _endDateController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _doseController.dispose();
+    _startDateController.dispose();
+    _endDateController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +66,37 @@ class TrackerMedicineBottomSheet extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 24.h(context)),
-              const _MedicineField(hintText: 'Enter Name'),
+              CustomTextField(
+                controller: _nameController,
+                hintText: 'Enter Name',
+                borderRadius: 8.r(context),
+                borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
+              ),
               SizedBox(height: 14.h(context)),
-              const _MedicineField(hintText: 'Enter Dose'),
+              CustomTextField(
+                controller: _doseController,
+                hintText: 'Enter Dose',
+                borderRadius: 8.r(context),
+                borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                focusedBorderSide: const BorderSide(color: Color(0xFFB9A99B)),
+              ),
               SizedBox(height: 14.h(context)),
               Row(
                 children: [
                   const Expanded(
-                    child: _MedicineField(
+                    child: CustomDropdownField(
                       hintText: 'Frequency',
-                      suffixIcon: Icons.keyboard_arrow_down,
+                      items: ['Daily', 'Weekly', 'Monthly', 'As needed'],
                     ),
                   ),
                   SizedBox(width: 12.w(context)),
                   const Expanded(
-                    child: _MedicineField(
+                    child: CustomDropdownField(
                       hintText: 'Type',
-                      suffixIcon: Icons.keyboard_arrow_down,
+                      items: ['Tablet', 'Capsule', 'Injection', 'Syrup'],
                     ),
                   ),
                 ],
@@ -66,44 +104,66 @@ class TrackerMedicineBottomSheet extends StatelessWidget {
               SizedBox(height: 14.h(context)),
               Row(
                 children: [
-                  const Expanded(
-                    child: _MedicineField(
+                  Expanded(
+                    child: CustomTextField(
+                      controller: _startDateController,
                       hintText: 'Start date',
-                      suffixIcon: Icons.calendar_today,
+                      readOnly: true,
+                      onTap: () => _pickDate(_startDateController),
+                      suffixIcon: GestureDetector(
+                        onTap: () => _pickDate(_startDateController),
+                        child: Icon(
+                          Icons.calendar_month,
+                          color: LightThemeColors.darkBrown,
+                          size: 16.sp(context),
+                        ),
+                      ),
+                      borderRadius: 8.r(context),
+                      borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                      enabledBorderSide: const BorderSide(
+                        color: Color(0xFFE8DED4),
+                      ),
+                      focusedBorderSide: const BorderSide(
+                        color: Color(0xFFB9A99B),
+                      ),
                     ),
                   ),
                   SizedBox(width: 12.w(context)),
-                  const Expanded(
-                    child: _MedicineField(
+                  Expanded(
+                    child: CustomTextField(
+                      controller: _endDateController,
                       hintText: 'End date',
-                      suffixIcon: Icons.calendar_today,
+                      readOnly: true,
+                      onTap: () => _pickDate(_endDateController),
+                      suffixIcon: GestureDetector(
+                        onTap: () => _pickDate(_endDateController),
+                        child: Icon(
+                          Icons.calendar_month,
+                          color: LightThemeColors.darkBrown,
+                          size: 16.sp(context),
+                        ),
+                      ),
+                      borderRadius: 8.r(context),
+                      borderSide: const BorderSide(color: Color(0xFFE8DED4)),
+                      enabledBorderSide: const BorderSide(
+                        color: Color(0xFFE8DED4),
+                      ),
+                      focusedBorderSide: const BorderSide(
+                        color: Color(0xFFB9A99B),
+                      ),
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 18.h(context)),
-              SizedBox(
-                width: double.infinity,
+              CustomButton(
+                text: 'Update Medicine',
+                onPressed: () => Navigator.pop(context),
+                borderRadius: 8.r(context),
                 height: 54.h(context),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: LightThemeColors.buttonColor,
-                    foregroundColor: Colors.white,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r(context)),
-                    ),
-                  ),
-                  child: Text(
-                    'Update Medicine',
-                    style: MyFonts.dmSans.copyWith(
-                      fontSize: 13.sp(context),
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
+                textStyle: MyFonts.dmSans.copyWith(
+                  fontSize: 13.sp(context),
+                  fontWeight: FontWeight.w800,
                 ),
               ),
               SizedBox(height: 18.h(context)),
@@ -130,58 +190,26 @@ class TrackerMedicineBottomSheet extends StatelessWidget {
       ),
     );
   }
-}
 
-class _MedicineField extends StatelessWidget {
-  const _MedicineField({
-    required this.hintText,
-    this.suffixIcon,
-  });
-
-  final String hintText;
-  final IconData? suffixIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      style: MyFonts.dmSans.copyWith(
-        color: LightThemeColors.darkBrown,
-        fontSize: 12.sp(context),
-        fontWeight: FontWeight.w700,
-      ),
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: MyFonts.dmSans.copyWith(
-          color: const Color(0xFF9A8E86),
-          fontSize: 12.sp(context),
-          fontWeight: FontWeight.w600,
-        ),
-        suffixIcon: suffixIcon == null
-            ? null
-            : Icon(
-                suffixIcon,
-                color: LightThemeColors.darkBrown,
-                size: 18.sp(context),
-              ),
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 16.w(context),
-          vertical: 14.h(context),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r(context)),
-          borderSide: const BorderSide(color: Color(0xFFE8DED4)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r(context)),
-          borderSide: const BorderSide(color: Color(0xFFE8DED4)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r(context)),
-          borderSide: const BorderSide(color: Color(0xFFB9A99B)),
-        ),
-      ),
+  Future<void> _pickDate(TextEditingController controller) async {
+    final now = DateTime.now();
+    final pickedDate = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: DateTime(now.year - 5),
+      lastDate: DateTime(now.year + 5),
     );
+
+    if (pickedDate == null || !mounted) {
+      return;
+    }
+
+    controller.text = _formatDate(pickedDate);
+  }
+
+  String _formatDate(DateTime date) {
+    final day = date.day.toString().padLeft(2, '0');
+    final month = date.month.toString().padLeft(2, '0');
+    return '$day/$month/${date.year}';
   }
 }

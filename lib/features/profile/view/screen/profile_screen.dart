@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
       create: (_) => ProfileBloc()..add(const ProfileStartedEvent()),
       child: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
-          return ListView(
+          return ListView( 
             padding: EdgeInsets.symmetric(
               horizontal: 18.w(context),
               vertical: 28.h(context),

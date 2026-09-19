@@ -18,7 +18,7 @@ class ProfileMenuCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color(0xFFFBF7F2),
         borderRadius: BorderRadius.circular(12.r(context)),
       ),
       clipBehavior: Clip.antiAlias,

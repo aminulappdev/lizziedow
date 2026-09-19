@@ -90,6 +90,7 @@ class _CostSectionState extends State<CostSection> {
             children: [
               Expanded(
                 child: CustomTextField(
+                  
                   hintText: 'Enter amount',
                   controller: _amountController,
                   keyboardType: TextInputType.number,

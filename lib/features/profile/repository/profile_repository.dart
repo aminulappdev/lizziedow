@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lizziedow/features/profile/model/profile_model.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class ProfileRepository {
   const ProfileRepository();
@@ -10,42 +11,42 @@ class ProfileRepository {
     initials: 'KW',
   );
 
-  List<ProfileMenuItemData> get menuItems => const [
+  List<ProfileMenuItemData> get menuItems =>  [
     ProfileMenuItemData(
       title: 'Edit Profile',
-      icon: Icons.account_circle_outlined,
+      icon: Assets.images.person.path,
     ),
-    ProfileMenuItemData(
+    ProfileMenuItemData( 
       title: 'Change Password',
-      icon: Icons.key_outlined,
+      icon: Assets.images.keyIcon.path,
     ),
     ProfileMenuItemData(
       title: 'Export Profile Data',
-      icon: Icons.file_download_outlined,
+      icon: Assets.images.fileExport.path,
     ),
     ProfileMenuItemData(
       title: 'Join Our Community',
-      icon: Icons.stop_circle,
+      icon: Assets.images.whatsapp.path,
     ),
     ProfileMenuItemData(
       title: 'Terms & Conditions',
-      icon: Icons.help_outline,
+      icon: Assets.images.quetions.path,
     ),
     ProfileMenuItemData(
       title: 'Privacy Policy',
-      icon: Icons.help_outline,
+      icon: Assets.images.quetions.path,
     ),
     ProfileMenuItemData(
       title: 'Contact Support',
-      icon: Icons.help_outline,
+      icon: Assets.images.quetions.path,
     ),
     ProfileMenuItemData(
       title: 'Delete Account',
-      icon: Icons.delete_outline,
+      icon: Assets.images.delete.path,
     ),
     ProfileMenuItemData(
       title: 'Logout',
-      icon: Icons.logout,
+      icon: Assets.images.logout.path,
       isDestructive: true,
     ),
   ];

@@ -65,7 +65,7 @@ class _MoodHistoryBottomSheetState extends State<MoodHistoryBottomSheet> {
               SizedBox(height: 28.h(context)),
               CustomTextField(
                 controller: _searchController,
-                hintText: 'Enter Doctor name or clinic',
+                hintText: 'Search mood or date',
                 borderRadius: 8.r(context),
                 borderSide: const BorderSide(color: Color(0xFFE8DED4)),
                 enabledBorderSide: const BorderSide(color: Color(0xFFE8DED4)),

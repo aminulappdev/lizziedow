@@ -32,12 +32,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const ProfilePageHeader(),
-            Divider(
-              height: 1.h(context),
-              thickness: 1,
-              color: Colors.white.withValues(alpha: 0.55),
-            ),
+            const ProfilePageHeader(),  
             Expanded(
               child: ListView(
                 padding: EdgeInsets.symmetric(
@@ -64,10 +59,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                   ),
                   SizedBox(height: 24.h(context)),
-                  LabelText(label: 'Username'),
+                  LabelText(label: 'Username', color: const Color(0xFF7B6654)),
                   SizedBox(height: 7.h(context)),
                   CustomTextField(
                     hintText: 'Enter your username',
+                    controller: _usernameController,
+                  ),
+                  SizedBox(height: 16.h(context)),
+                   LabelText(label: 'Email', color: const Color(0xFF7B6654)),
+                  SizedBox(height: 7.h(context)),
+                  CustomTextField(
+                    hintText: 'aa8lT@example.com',
                     controller: _usernameController,
                   ),
                 ],

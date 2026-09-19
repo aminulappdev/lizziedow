@@ -45,11 +45,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               child: Column(
                 children: [
                   const ProfilePageHeader(),
-                  Divider(
-                    height: 1.h(context),
-                    thickness: 1,
-                    color: Colors.white.withValues(alpha: 0.55),
-                  ),
+                 
                   Expanded(
                     child: ListView(
                       padding: EdgeInsets.symmetric(
@@ -76,7 +72,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
                         ),
                         SizedBox(height: 24.h(context)),
-                        LabelText(label: 'Current Password'),
+                        LabelText(label: 'Current Password', color: const Color(0xFF7B6654)),
                         SizedBox(height: 7.h(context)),
                         CustomTextField(
                           hintText: 'Enter your current password',
@@ -92,7 +88,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
                         ),
                         SizedBox(height: 18.h(context)),
-                        LabelText(label: 'New Password'),
+                        LabelText(label: 'New Password', color: const Color(0xFF7B6654)),
                         SizedBox(height: 7.h(context)),
                         CustomTextField(
                           hintText: 'Enter your new password',
@@ -108,7 +104,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
                         ),
                         SizedBox(height: 18.h(context)),
-                        LabelText(label: 'Confirm New Password'),
+                        LabelText(label: 'Confirm New Password', color: const Color(0xFF7B6654)),
                         SizedBox(height: 7.h(context)),
                         CustomTextField(
                           hintText: 'Confirm your new password',

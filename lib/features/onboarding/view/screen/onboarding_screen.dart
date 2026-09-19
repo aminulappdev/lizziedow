@@ -91,7 +91,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 CustomButton(text: 'Start Your Journey', onPressed: _goToLogin),
-                SizedBox(height: 22.h(context)),
+                SizedBox(height: 30.h(context)),
               ],
             ),
           ),

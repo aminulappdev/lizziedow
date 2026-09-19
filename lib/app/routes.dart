@@ -48,7 +48,12 @@ class Routes {
       case RoutesName.setPasswordScreen:
         return MaterialPageRoute(builder: (_) => const SetPasswordPage());
       case RoutesName.setTypeScreen:
-        return MaterialPageRoute(builder: (_) => SetTypeScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => AuthBloc(),
+            child: const SetTypeScreen(),
+          ),
+        );
       case RoutesName.editProfileScreen:
         return MaterialPageRoute(builder: (_) => const EditProfileScreen());
       case RoutesName.changePasswordScreen:

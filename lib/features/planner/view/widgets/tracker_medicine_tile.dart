@@ -12,7 +12,7 @@ class TrackerMedicineTile extends StatelessWidget {
     required this.detail,
     required this.isTakenToday,
     required this.showDivider,
-  });
+  }); 
  
   final String title;
   final String detail;
@@ -37,8 +37,14 @@ class TrackerMedicineTile extends StatelessWidget {
             width: 34.w(context),
             height: 34.w(context),
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Colors.transparent,
               shape: BoxShape.circle,
+              border: Border.fromBorderSide(
+                BorderSide(
+                  color: Color(0xFFFBF7F2),
+                  width: 1,
+                ),
+              ),
             ),
             child: Center(
               child: CrashSafeImage(

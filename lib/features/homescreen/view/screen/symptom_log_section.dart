@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/homescreen/view/widgets/mood_history_bottom_sheet.dart';
@@ -9,7 +8,7 @@ import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
 
 class SymptomLogPanel extends StatelessWidget {
   const SymptomLogPanel({
-    super.key,
+    super.key, 
     required this.moods,
     required this.symptoms,
     this.buttonText = 'Log Symptoms',
@@ -60,7 +59,8 @@ class SymptomLogPanel extends StatelessWidget {
           //   ),
           // ),
           CustomTextField(
-            hintText: 'Write here in detail...',
+            fillColor: const Color(0xFFFBF7F2),
+            hintText: 'Write here in detail...',     
             controller: TextEditingController(),
             maxLines: 5,
             label: '',

@@ -7,99 +7,124 @@ import 'package:lizziedow/features/planner/model/planner_model.dart';
 class PlannerCalendarCard extends StatelessWidget {
   const PlannerCalendarCard({
     super.key,
-    required this.days, 
+    required this.days,
   });
 
   final List<PlannerCalendarDay> days;
 
   static const _weekDays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
-  @override
+  @override 
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 24.w(context),
-          vertical: 16.h(context),
-        ),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8.r(context)),
-        ),
-        child: Column(
-          children: [
-            Row(
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(
+              24.w(context),
+              24.h(context),
+              24.w(context),
+              22.h(context),
+            ),
+            decoration: BoxDecoration(
+              color: const Color(0xFFFBF7F2),
+              borderRadius: BorderRadius.circular(12.r(context)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.08),
+                  blurRadius: 18.r(context),
+                  offset: Offset(0, 8.h(context)),
+                ),
+              ],
+            ),
+            child: Column(
               children: [
-                Icon(
-                  Icons.chevron_left,
-                  color: const Color(0xFF8E948F),
-                  size: 25.sp(context),
-                ),
-                Expanded(
-                  child: Text(
-                    'December 2025',
-                    textAlign: TextAlign.center,
-                    style: MyFonts.dmSans.copyWith(
-                      color: const Color(0xFF55504C),
-                      fontSize: 15.sp(context),
-                      fontWeight: FontWeight.w800,
+                Row(
+                  children: [
+                    Icon(
+                      Icons.chevron_left,
+                      color: const Color(0xFF8E948F),
+                      size: 28.sp(context),
                     ),
-                  ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'December 2025',
+                            textAlign: TextAlign.center,
+                            style: MyFonts.dmSans.copyWith(
+                              color: const Color(0xFF3D3936),
+                              fontSize: 16.sp(context),
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          SizedBox(width: 3.w(context)),
+                          Icon(
+                            Icons.keyboard_arrow_down,
+                            color: const Color(0xFF7E7770),
+                            size: 16.sp(context),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.chevron_right,
+                      color: const Color(0xFF8E948F),
+                      size: 28.sp(context),
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.chevron_right,
-                  color: const Color(0xFF8E948F),
-                  size: 25.sp(context),
+                SizedBox(height: 24.h(context)),
+                Row(
+                  children: _weekDays.map((day) {
+                    return Expanded(
+                      child: Text(
+                        day,
+                        textAlign: TextAlign.center,
+                        style: MyFonts.dmSans.copyWith(
+                          color: const Color(0xFF514C48),
+                          fontSize: 10.sp(context),
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(height: 14.h(context)),
+                GridView.builder(
+                  itemCount: days.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 7,
+                    mainAxisSpacing: 4.h(context),
+                    crossAxisSpacing: 5.w(context),
+                    childAspectRatio: 0.86,
+                  ),
+                  itemBuilder: (context, index) {
+                    return _CalendarDayCell(day: days[index]);
+                  },
                 ),
               ],
             ),
-            SizedBox(height: 18.h(context)),
-            Row(
-              children: _weekDays.map((day) {
-                return Expanded(
-                  child: Text(
-                    day,
-                    textAlign: TextAlign.center,
-                    style: MyFonts.dmSans.copyWith(
-                      color: const Color(0xFF3C3733),
-                      fontSize: 9.sp(context),
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                );
-              }).toList(),
+          ),
+        ),
+        SizedBox(height: 20.h(context)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            _CalendarLegend(
+              color: Color(0xFF1F1A17),
+              label: 'Appointments',
             ),
-            SizedBox(height: 8.h(context)),
-            GridView.builder(
-              itemCount: days.length,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 7,
-                mainAxisSpacing: 1.h(context),
-                crossAxisSpacing: 5.w(context),
-                childAspectRatio: 0.9,
-              ),
-              itemBuilder: (context, index) {
-                return _CalendarDayCell(day: days[index]);
-              },
-            ),
-            SizedBox(height: 12.h(context)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                _CalendarLegend(
-                  color: Color(0xFF1F1A17),
-                  label: 'Appointments',
-                ),
-                SizedBox(width: 28),
-                _CalendarLegend(color: Color(0xFF7B6654), label: 'Cycle Day'),
-              ],
-            ),
+            SizedBox(width: 28),
+            _CalendarLegend(color: Color(0xFF7B6654), label: 'Cycle Day'),
           ],
         ),
-      ),
+      ],
     );
   }
 }
@@ -127,8 +152,8 @@ class _CalendarDayCell extends StatelessWidget {
           ),
         ),
         Container(
-          width: 25.w(context),
-          height: 25.w(context),
+          width: 28.w(context),
+          height: 28.w(context),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: day.isSelected
@@ -140,7 +165,7 @@ class _CalendarDayCell extends StatelessWidget {
             '${day.day}',
             style: MyFonts.dmSans.copyWith(
               color: day.isSelected ? Colors.white : const Color(0xFF332D29),
-              fontSize: 11.sp(context),
+              fontSize: 12.sp(context),
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -166,7 +191,7 @@ class _CalendarLegend extends StatelessWidget {
   const _CalendarLegend({required this.color, required this.label});
 
   final Color color;
-  final String label;
+  final String label; 
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +204,7 @@ class _CalendarLegend extends StatelessWidget {
           label,
           style: MyFonts.dmSans.copyWith(
             color: const Color(0xFF4F4740),
-            fontSize: 8.sp(context),
+            fontSize: 10.sp(context),
             fontWeight: FontWeight.w800,
           ),
         ),
@@ -196,8 +221,8 @@ class _TinyDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 4.w(context),
-      height: 4.w(context),
+      width: 6.w(context),
+      height: 6.w(context),
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,

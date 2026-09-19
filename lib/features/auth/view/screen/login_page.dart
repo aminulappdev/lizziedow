@@ -4,12 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lizziedow/app/routes_name.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
-import 'package:lizziedow/app/utils/validator_services.dart';
 import 'package:lizziedow/features/auth/bloc/auth_bloc.dart';
 import 'package:lizziedow/features/auth/bloc/auth_event.dart';
 import 'package:lizziedow/features/auth/bloc/auth_state.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
-import 'package:lizziedow/features/auth/view/widgets/auth_consent_bottom_sheet.dart';
 import 'package:lizziedow/features/auth/view/widgets/have_account.dart';
 import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';
@@ -26,14 +24,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
 
   @override
-
   void dispose() {
     _emailFocus.dispose();
     _passwordFocus.dispose();
@@ -43,34 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login() {
-   // if (_formKey.currentState?.validate() ?? false) {
-      _showConsentBottomSheet();
-   // }
-  }
-
-  void _showConsentBottomSheet() {
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.white,
-      barrierColor: Colors.black.withValues(alpha: 0.42),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(8.r(context)),
-        ),
-      ),
-      builder: (bottomSheetContext) {
-        return BlocProvider.value(
-          value: context.read<AuthBloc>(),
-          child: AuthConsentBottomSheet(
-            onAccepted: () {
-              Navigator.pop(bottomSheetContext);
-              Navigator.pushReplacementNamed(context, RoutesName.homeScreen);
-            },
-          ),
-        );
-      },
-    );
+    Navigator.pushReplacementNamed(context, RoutesName.setTypeScreen);
   }
 
   @override
@@ -91,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(const SnackBar(content: Text('Login success')));
-            _showConsentBottomSheet();
+            Navigator.pushReplacementNamed(context, RoutesName.setTypeScreen);
           }
         },
         builder: (context, state) {
@@ -105,113 +74,108 @@ class _LoginPageState extends State<LoginPage> {
                     constraints: BoxConstraints(
                       minHeight: constraints.maxHeight,
                     ),
-                    child: Form(
-                      key: _formKey,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 22.w(context),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            LoginDesignLayer(titleTopSpacing: 50.h(context)),
-                            SizedBox(height: 24.h(context)),
-                            LabelText(label: 'Email'),
-                            SizedBox(height: 6.h(context)),
-                            CustomTextField(
-                              controller: _emailController,
-                              label: 'Email',
-                              hintText: 'Enter your email address',
-                              keyboardType: TextInputType.emailAddress,
-                              focusNode: _emailFocus,
-                              textInputAction: TextInputAction.next,
-                              validator: ValidatorService.validateEmailAddress,
-                              onChanged: (value) {
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 22.w(context),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          LoginDesignLayer(titleTopSpacing: 50.h(context)),
+                          SizedBox(height: 24.h(context)),
+                          LabelText(label: 'Email'),
+                          SizedBox(height: 6.h(context)),
+                          CustomTextField(
+                            controller: _emailController,
+                            label: 'Email',
+                            hintText: 'Enter your email address',
+                            keyboardType: TextInputType.emailAddress,
+                            focusNode: _emailFocus,
+                            textInputAction: TextInputAction.next,
+                            onChanged: (value) {
+                              context.read<AuthBloc>().add(
+                                AuthEmailChanged(value.trim()),
+                              );
+                            },
+                            onFieldSubmitted: (_) {
+                              _passwordFocus.requestFocus();
+                            },
+                          ),
+                          SizedBox(height: 14.h(context)),
+                          LabelText(label: 'Password'),
+                          SizedBox(height: 6.h(context)),
+                          CustomTextField(
+                            controller: _passwordController,
+                            label: 'Password',
+                            hintText: 'Enter your password',
+                            obscureText: !state.isPasswordVisible,
+                            focusNode: _passwordFocus,
+                            textInputAction: TextInputAction.done,
+                            suffixIcon: PasswordVisibilityIcon(
+                              isVisible: state.isPasswordVisible,
+                              onTap: () {
                                 context.read<AuthBloc>().add(
-                                  AuthEmailChanged(value.trim()),
+                                  const AuthPasswordVisibilityToggled(),
                                 );
                               },
-                              onFieldSubmitted: (_) {
-                                _passwordFocus.requestFocus();
-                              },
                             ),
-                            SizedBox(height: 14.h(context)),
-                            LabelText(label: 'Password'),
-                            SizedBox(height: 6.h(context)),
-                            CustomTextField(
-                              controller: _passwordController,
-                              label: 'Password',
-                              hintText: 'Enter your password',
-                              obscureText: !state.isPasswordVisible,
-                              focusNode: _passwordFocus,
-                              textInputAction: TextInputAction.done,
-                              validator: ValidatorService.validateSimpleField,
-                              suffixIcon: PasswordVisibilityIcon(
-                                isVisible: state.isPasswordVisible,
-                                onTap: () {
-                                  context.read<AuthBloc>().add(
-                                    const AuthPasswordVisibilityToggled(),
-                                  );
-                                },
-                              ),
-                              onChanged: (value) {
-                                context.read<AuthBloc>().add(
-                                  AuthPasswordChanged(value),
-                                );
-                              },
-                              onFieldSubmitted: (_) => _login(),
-                            ),
-                            SizedBox(height: 10.h(context)),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: GestureDetector(
-                                onTap: isLoading
-                                    ? null
-                                    : () => Navigator.pushNamed(
-                                        context,
-                                        RoutesName.forgotPasswordScreen,
-                                      ),
-                                child: Text(
-                                  'Forgot password?',
-                                  style: Theme.of(context).textTheme.bodyMedium
-                                      ?.copyWith(
-                                        color: const Color(0xFF757575),
-                                        fontSize: 12.sp(context),
-                                        fontWeight: FontWeight.w500,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                ),
+                            onChanged: (value) {
+                              context.read<AuthBloc>().add(
+                                AuthPasswordChanged(value),
+                              );
+                            },
+                            onFieldSubmitted: (_) => _login(),
+                          ),
+                          SizedBox(height: 10.h(context)),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: isLoading
+                                  ? null
+                                  : () => Navigator.pushNamed(
+                                      context,
+                                      RoutesName.forgotPasswordScreen,
+                                    ),
+                              child: Text(
+                                'Forgot password?',
+                                style: Theme.of(context).textTheme.bodyMedium
+                                    ?.copyWith(
+                                      color: const Color(0xFF757575),
+                                      fontSize: 12.sp(context),
+                                      fontWeight: FontWeight.w500,
+                                      decoration: TextDecoration.underline,
+                                    ),
                               ),
                             ),
-                            SizedBox(height: 24.h(context)),
-                            CustomButton(
-                              text: isLoading ? 'Loading...' : 'Login',
-                              onPressed: isLoading ? null : _login,
+                          ),
+                          SizedBox(height: 24.h(context)),
+                          CustomButton(
+                            text: isLoading ? 'Loading...' : 'Login',
+                            onPressed: isLoading ? null : _login,
+                          ),
+                          SizedBox(height: 24.h(context)),
+                          LoginDivider(),
+                          SizedBox(height: 16.h(context)),
+                          CustomButton(
+                            text: 'Google',
+                            prefixIcon: CrashSafeImage(
+                              Assets.images.google.keyName,
+                              width: 18.w(context),
+                              height: 18.h(context),
                             ),
-                            SizedBox(height: 24.h(context)),
-                            LoginDivider(),
-                            SizedBox(height: 16.h(context)),
-                            CustomButton(
-                              text: 'Google',
-                              prefixIcon: CrashSafeImage(
-                                Assets.images.google.keyName,
-                                width: 18.w(context),
-                                height: 18.h(context),
-                              ),
-                              onPressed: isLoading ? null : () {},
+                            onPressed: isLoading ? null : () {},
+                          ),
+                          SizedBox(height: 28.h(context)),
+                          HaveAccountSestion(
+                            label: "Don't have an account?",
+                            buttonText: "Register",
+                            onPressed: () => Navigator.pushNamed(
+                              context,
+                              RoutesName.signupScreen,
                             ),
-                            SizedBox(height: 28.h(context)),
-                            HaveAccountSestion(
-                              label: "Don't have an account?",
-                              buttonText: "Register",
-                              onPressed: () => Navigator.pushNamed(
-                                context,
-                                RoutesName.signupScreen,
-                              ),
-                            ),
-                            SizedBox(height: 28.h(context)),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 28.h(context)),
+                        ],
                       ),
                     ),
                   ),

@@ -80,11 +80,11 @@ class _PlannerAppointmentBottomSheetState
                   Expanded(
                     child: CustomTextField(
                       controller: _timeController,
-                      hintText: 'Enter date',
+                      hintText: 'Enter time',
                       readOnly: true,
-                      onTap: () => _pickDate(_timeController),
+                      onTap: _pickTime,
                       suffixIcon: GestureDetector(
-                        onTap: () => _pickDate(_timeController),
+                        onTap: _pickTime,
                         child: Icon(
                           Icons.schedule,
                           color: LightThemeColors.darkBrown,
@@ -158,7 +158,7 @@ class _PlannerAppointmentBottomSheetState
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
-                  'Cancel Item',
+                  'Cancel Appointment',
                   style: MyFonts.dmSans.copyWith(
                     fontSize: 13.sp(context),
                     fontWeight: FontWeight.w800,
@@ -186,6 +186,19 @@ class _PlannerAppointmentBottomSheetState
     }
 
     controller.text = _formatDate(pickedDate);
+  }
+
+  Future<void> _pickTime() async {
+    final pickedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    if (pickedTime == null || !mounted) {
+      return;
+    }
+
+    _timeController.text = pickedTime.format(context);
   }
 
   String _formatDate(DateTime date) {

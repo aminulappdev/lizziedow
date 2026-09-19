@@ -11,7 +11,7 @@ class CostInfoTile extends StatelessWidget {
     required this.amount,
   });
 
-  final IconData icon;
+  final IconData icon; 
   final String title;
   final String amount;
 
@@ -21,7 +21,7 @@ class CostInfoTile extends StatelessWidget {
       height: 44.h(context),
       padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color(0xFFFBF7F2),
         borderRadius: BorderRadius.circular(8.r(context)),
       ),
       child: Row(

@@ -22,7 +22,7 @@ class CostTotalCard extends StatelessWidget {
         vertical: 14.h(context),
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color(0xFFFBF7F2),
         borderRadius: BorderRadius.circular(8.r(context)),
       ),
       child: Column(

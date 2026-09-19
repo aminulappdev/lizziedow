@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> { 
   late final PageController _quickCardController;
 
   @override
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _quickCardController.dispose();
     super.dispose();
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -45,9 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(bottom: 18.h(context)),
             physics: const BouncingScrollPhysics(),
             children: [
-              SizedBox(height: 40.h(context)),
+              SizedBox(height: 32.h(context)),
               SizedBox(
-                height: 136.h(context),
+                height: 128.h(context),
                 child: PageView.builder(
                   controller: _quickCardController,
                   padEnds: false,

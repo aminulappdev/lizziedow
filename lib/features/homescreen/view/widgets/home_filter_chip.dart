@@ -11,22 +11,22 @@ class HomeFilterChip extends StatelessWidget {
     required this.onTap,
   });
 
-  final String label;
+  final String label; 
   final bool isSelected;
   final VoidCallback onTap;
 
-  @override 
+  @override  
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(
-          horizontal: 18.w(context),
-          vertical: 13.h(context),
+          horizontal: 14.w(context),
+          vertical: 10.h(context),
         ),
         decoration: BoxDecoration(
-          color: isSelected ? LightThemeColors.buttonColor : Colors.white,
+          color: isSelected ? LightThemeColors.buttonColor : Color(0xFFF6F0EB),
           borderRadius: BorderRadius.circular(100.r(context)),
         ),
         child: Text(

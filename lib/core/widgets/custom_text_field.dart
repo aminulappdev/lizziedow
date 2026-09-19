@@ -24,6 +24,7 @@ class CustomTextField extends StatefulWidget {
     this.enabledBorderSide,
     this.focusedBorderSide,
     this.borderRadius,
+    this.fillColor,
   });
 
   final TextEditingController controller;
@@ -45,6 +46,7 @@ class CustomTextField extends StatefulWidget {
   final BorderSide? enabledBorderSide;
   final BorderSide? focusedBorderSide;
   final double? borderRadius;
+  final Color? fillColor;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -102,7 +104,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               fontWeight: FontWeight.w500,
             ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: widget.fillColor ?? Colors.white,
             constraints: BoxConstraints(minHeight: 48.h(context)),
             contentPadding: EdgeInsets.symmetric(
               horizontal: 18.w(context),

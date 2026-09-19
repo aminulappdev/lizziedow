@@ -8,7 +8,7 @@ class PlannerRepository {
     'Calendar',
     'Checklist',
     'Tracker',
-    'Cost',
+    'Costs',
   ];
 
   List<String> get sectionFilters => const [
@@ -21,7 +21,7 @@ class PlannerRepository {
     'Medical',
     'Financial',
     'Lifestyle',
-    'Wellbeing',
+    'Wellbeing', 
     'Partner',
   ];
 

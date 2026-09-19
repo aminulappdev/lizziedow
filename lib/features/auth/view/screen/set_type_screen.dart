@@ -1,14 +1,43 @@
 import 'package:crash_safe_image/crash_safe_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lizziedow/app/routes_name.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/features/auth/bloc/auth_bloc.dart';
 import 'package:lizziedow/features/auth/view/widgets/action_card.dart';
+import 'package:lizziedow/features/auth/view/widgets/auth_consent_bottom_sheet.dart';
 import 'package:lizziedow/features/auth/view/widgets/speech_box.dart';
 import 'package:lizziedow/gen/assets.gen.dart';
 
 class SetTypeScreen extends StatelessWidget {
   const SetTypeScreen({super.key});
+
+  void _showConsentBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(8.r(context)),
+        ),
+      ),
+      builder: (bottomSheetContext) {
+        return BlocProvider.value(
+          value: context.read<AuthBloc>(),
+          child: AuthConsentBottomSheet(
+            onAccepted: () {
+              Navigator.pop(bottomSheetContext);
+              Navigator.pushReplacementNamed(context, RoutesName.homeScreen);
+            },
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,19 +155,19 @@ class SetTypeScreen extends StatelessWidget {
               SetTypeActionTile(
                 iconPath: Assets.images.calender.keyName,
                 title: 'Log Symptoms',
-                onTap: () {},
+                onTap: () => _showConsentBottomSheet(context),
               ),
               SizedBox(height: 10.h(context)),
               SetTypeActionTile(
                 iconPath: Assets.images.medichine.keyName,
                 title: 'Track Medications',
-                onTap: () {},
+                onTap: () => _showConsentBottomSheet(context),
               ),
               SizedBox(height: 10.h(context)),
               SetTypeActionTile(
                 iconPath: Assets.images.heart.keyName,
                 title: 'Manage Appointments',
-                onTap: () {},
+                onTap: () => _showConsentBottomSheet(context),
               ),
             ],
           ),

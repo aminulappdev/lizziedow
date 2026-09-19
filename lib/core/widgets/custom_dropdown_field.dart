@@ -11,6 +11,10 @@ class CustomDropdownField extends StatefulWidget {
     this.hintText,
     this.onChanged,
     this.validator,
+    this.borderRadius,
+    this.borderSide,
+    this.enabledBorderSide,
+    this.focusedBorderSide,
   });
 
   final List<String> items;
@@ -19,6 +23,10 @@ class CustomDropdownField extends StatefulWidget {
   final String? hintText;
   final ValueChanged<String?>? onChanged;
   final FormFieldValidator<String>? validator;
+  final double? borderRadius;
+  final BorderSide? borderSide;
+  final BorderSide? enabledBorderSide;
+  final BorderSide? focusedBorderSide;
 
   @override
   State<CustomDropdownField> createState() => _CustomDropdownFieldState();
@@ -44,6 +52,14 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
 
   @override
   Widget build(BuildContext context) {
+    final radius = widget.borderRadius ?? 8.r(context);
+    final borderSide =
+        widget.borderSide ?? const BorderSide(color: Color(0xFFE8DED4));
+    final enabledBorderSide =
+        widget.enabledBorderSide ?? const BorderSide(color: Color(0xFFE8DED4));
+    final focusedBorderSide =
+        widget.focusedBorderSide ?? const BorderSide(color: Color(0xFFB9A99B));
+
     return DropdownButtonFormField<String>(
       value: _selectedValue,
       validator: widget.validator,
@@ -74,16 +90,16 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
           vertical: 14.h(context),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r(context)),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(radius),
+          borderSide: borderSide,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r(context)),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(radius),
+          borderSide: enabledBorderSide,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r(context)),
-          borderSide: const BorderSide(color: Color(0xFF8B735F)),
+          borderRadius: BorderRadius.circular(radius),
+          borderSide: focusedBorderSide,
         ),
       ),
       items: widget.items.map((item) {

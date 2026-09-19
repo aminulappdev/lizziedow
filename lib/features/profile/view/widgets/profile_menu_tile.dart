@@ -1,3 +1,4 @@
+import 'package:crash_safe_image/crash_safe_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
@@ -16,7 +17,7 @@ class ProfileMenuTile extends StatelessWidget {
   final VoidCallback onTap;
   final bool showDivider;
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     final color = item.isDestructive
         ? const Color(0xFFC95757)
@@ -33,7 +34,12 @@ class ProfileMenuTile extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(item.icon, color: color, size: 18.sp(context)),
+                CrashSafeImage(
+                  item.icon,
+                  width: 20.w(context),
+                  height: 20.h(context),
+                  color: color,
+                ),
                 SizedBox(width: 12.w(context)),
                 Expanded(
                   child: Text(

@@ -17,7 +17,7 @@ class TrackerMedicationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SectionHeader(
+        SectionHeader( 
           title: 'Medication',
           trailing: Text(
             '${medicines.length} Items',

@@ -34,13 +34,17 @@ class JournalTile extends StatelessWidget {
           Container(
             width: 34.w(context),
             height: 34.w(context),
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: Colors.transparent,
               shape: BoxShape.circle,
+              border: Border.all(
+                color: const Color(0xFFFBF7F2),
+                width: 1,
+              ),
             ),
             child: Center(
               child: CrashSafeImage(
-                Assets.images.fileNote.keyName,
+                Assets.images.fileNoteEdit.keyName,
                 width: 17.w(context),
                 height: 17.h(context),
                 color: LightThemeColors.darkBrown,

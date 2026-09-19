@@ -107,7 +107,7 @@ class _ChecklistItemBottomSheetState extends State<ChecklistItemBottomSheet> {
               ),
               SizedBox(height: 18.h(context)),
               CustomButton(
-                text: 'Update Item',
+                text: 'Add Item',
                 onPressed: () => Navigator.pop(context),
                 borderRadius: 8.r(context),
                 height: 54.h(context),

@@ -11,20 +11,20 @@ class QuickActionCard extends StatelessWidget {
     required this.description,
     required this.icon,
   });
-
+ 
   final String title;
-  final String description;
+  final String description; 
   final String icon;
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: 14.w(context),
-        vertical: 16.h(context),
+        horizontal: 10.w(context),
+        vertical: 12.h(context),
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.92),
+        color: Color(0xFFFBF7F2),
         borderRadius: BorderRadius.circular(9.r(context)),
       ),
       child: Column(
@@ -32,8 +32,8 @@ class QuickActionCard extends StatelessWidget {
         children: [
           CrashSafeImage(
             icon,
-            width: 29.w(context),
-            height: 29.h(context),
+            width: 26.w(context),
+            height: 26.h(context),
             color: LightThemeColors.darkBrown,
           ),
           SizedBox(height: 8.h(context)),
@@ -44,8 +44,8 @@ class QuickActionCard extends StatelessWidget {
             textAlign: TextAlign.center,
             style: MyFonts.instrumentSerif.copyWith(
               color: const Color(0xFF4A403A),
-              fontSize: 22.sp(context),
-              fontWeight: FontWeight.w500,
+              fontSize: 20.sp(context),
+              fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(height: 7.h(context)),

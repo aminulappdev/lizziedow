@@ -53,7 +53,7 @@ class DashboardScreen extends StatelessWidget {
                   Divider(
                     height: 1.h(context),
                     thickness: 1,
-                    color: Colors.white.withValues(alpha: 0.55),
+                    color: Colors.transparent,
                   ),
                   Expanded(child: DashboardTabBody(index: state.currentIndex)),
                 ],
@@ -62,7 +62,7 @@ class DashboardScreen extends StatelessWidget {
             bottomNavigationBar: Container(
               height: 82.h(context),
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Color(0xFFFBF7F2),
                 border: Border(top: BorderSide(color: Color(0xFFF0E7DC))),
               ),
               child: SafeArea(

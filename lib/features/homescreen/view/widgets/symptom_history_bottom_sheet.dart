@@ -179,7 +179,7 @@ class _SymptomHistoryTile extends StatelessWidget {
           ),
           SizedBox(height: 8.h(context)),
           Text(
-            'I consent to receive personalised communications, including app updates, wellbeing tips and relevant information from Fertility Sisterhood.',
+            'Logged symptom notes and related wellbeing updates will appear here.',
             style: MyFonts.dmSans.copyWith(
               color: const Color(0xFF8F837A),
               fontSize: 11.sp(context),

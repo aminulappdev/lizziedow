@@ -24,7 +24,7 @@ class ProfileMenuItemData extends Equatable {
   });
 
   final String title;
-  final IconData icon;
+  final String icon;
   final bool isDestructive;
 
   @override

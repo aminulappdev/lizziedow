@@ -16,7 +16,7 @@ class OptionCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final List<String> options;
-  final String? trailingText;
+  final String? trailingText; 
   final VoidCallback? onTrailingTap;
 
   @override
@@ -25,7 +25,7 @@ class OptionCard extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(18.r(context)),
       decoration: BoxDecoration(
-        color: Color(0xFFF6F0EB),
+        color: Color(0xFFFBF7F2),
         borderRadius: BorderRadius.circular(8.r(context)),
       ),
       child: Column(

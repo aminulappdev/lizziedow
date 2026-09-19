@@ -7,6 +7,7 @@ class DocumentsRepository {
 
   List<String> get photoFilters => const [
     'All',
+    'Consultation',
     'Stims',
     'Trigger',
     'Egg Retrieval',
