@@ -27,7 +27,7 @@ class Routes {
       case RoutesName.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const DashboardScreen(),
-        );
+        ); 
       case RoutesName.signupScreen:
         return MaterialPageRoute(builder: (_) => const SignupPage());
       case RoutesName.verifyEmailScreen:

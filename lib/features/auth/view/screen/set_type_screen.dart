@@ -150,7 +150,7 @@ class SetTypeScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              ), 
               SizedBox(height: 10.h(context)),
               SetTypeActionTile(
                 iconPath: Assets.images.calender.keyName,

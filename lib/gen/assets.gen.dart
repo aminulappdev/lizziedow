@@ -112,6 +112,26 @@ class $AssetsImagesGen {
   AssetGenImage get medichine =>
       const AssetGenImage('assets/images/medichine.png');
 
+  /// File path: assets/images/mood_anxious.png
+  AssetGenImage get moodAnxious =>
+      const AssetGenImage('assets/images/mood_anxious.png');
+
+  /// File path: assets/images/mood_clam.png
+  AssetGenImage get moodClam =>
+      const AssetGenImage('assets/images/mood_clam.png');
+
+  /// File path: assets/images/mood_happy.png
+  AssetGenImage get moodHappy =>
+      const AssetGenImage('assets/images/mood_happy.png');
+
+  /// File path: assets/images/mood_neutral.png
+  AssetGenImage get moodNeutral =>
+      const AssetGenImage('assets/images/mood_neutral.png');
+
+  /// File path: assets/images/mood_sad.png
+  AssetGenImage get moodSad =>
+      const AssetGenImage('assets/images/mood_sad.png');
+
   /// File path: assets/images/news.png
   AssetGenImage get news => const AssetGenImage('assets/images/news.png');
 
@@ -172,6 +192,11 @@ class $AssetsImagesGen {
     logo,
     logout,
     medichine,
+    moodAnxious,
+    moodClam,
+    moodHappy,
+    moodNeutral,
+    moodSad,
     news,
     notofication,
     person,

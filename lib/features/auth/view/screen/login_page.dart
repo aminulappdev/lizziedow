@@ -8,6 +8,7 @@ import 'package:lizziedow/features/auth/bloc/auth_bloc.dart';
 import 'package:lizziedow/features/auth/bloc/auth_event.dart';
 import 'package:lizziedow/features/auth/bloc/auth_state.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
+import 'package:lizziedow/features/auth/view/widgets/auth_consent_bottom_sheet.dart';
 import 'package:lizziedow/features/auth/view/widgets/have_account.dart';
 import 'package:lizziedow/features/auth/view/widgets/label_text.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';
@@ -38,8 +39,27 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _login() {
-    Navigator.pushReplacementNamed(context, RoutesName.setTypeScreen);
+  void _showConsentBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      barrierColor: Colors.black.withValues(alpha: 0.42),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(8.r(context))),
+      ),
+      builder: (bottomSheetContext) {
+        return BlocProvider.value(
+          value: context.read<AuthBloc>(),
+          child: AuthConsentBottomSheet(
+            onAccepted: () {
+              Navigator.pop(bottomSheetContext);
+              Navigator.pushReplacementNamed(context, RoutesName.homeScreen);
+            },
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -75,9 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                       minHeight: constraints.maxHeight,
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 22.w(context),
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 22.w(context)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -124,7 +142,8 @@ class _LoginPageState extends State<LoginPage> {
                                 AuthPasswordChanged(value),
                               );
                             },
-                            onFieldSubmitted: (_) => _login(),
+                            onFieldSubmitted: (_) =>
+                                _showConsentBottomSheet(context),
                           ),
                           SizedBox(height: 10.h(context)),
                           Align(
@@ -151,7 +170,11 @@ class _LoginPageState extends State<LoginPage> {
                           SizedBox(height: 24.h(context)),
                           CustomButton(
                             text: isLoading ? 'Loading...' : 'Login',
-                            onPressed: isLoading ? null : _login,
+                            onPressed: isLoading
+                                ? null
+                                : () {
+                                    _showConsentBottomSheet(context);
+                                  },
                           ),
                           SizedBox(height: 24.h(context)),
                           LoginDivider(),

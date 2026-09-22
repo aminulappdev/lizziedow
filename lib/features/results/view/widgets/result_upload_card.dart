@@ -8,7 +8,7 @@ import 'package:lizziedow/gen/assets.gen.dart';
 class CustomUploadCard extends StatelessWidget {
   const CustomUploadCard({
     super.key,
-    this.iconPath, 
+    this.iconPath,  
     this.icon,
     this.title = 'Drag and drop your files',
     this.subtitle = 'JPEG, PND, PDF, and MP4 formats, up to 50MB',

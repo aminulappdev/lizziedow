@@ -69,7 +69,7 @@ class DocumentsContent extends StatelessWidget {
           Row(
             children: [
               Text(
-                'All Documents',
+                'All Documents', 
                 style: MyFonts.dmSans.copyWith(
                   color: LightThemeColors.darkBrown,
                   fontSize: 14.sp(context),
@@ -98,7 +98,7 @@ class DocumentsContent extends StatelessWidget {
                   Divider(
                     height: 1.h(context),
                     thickness: 1,
-                    color: Colors.white.withValues(alpha: 0.55),
+                    color: Colors.transparent,
                   ),
               ],
             );

@@ -93,16 +93,16 @@ class PlannerCalendarCard extends StatelessWidget {
                     );
                   }).toList(),
                 ),
-                SizedBox(height: 14.h(context)),
+                SizedBox(height: 10.h(context)),
                 GridView.builder(
                   itemCount: days.length,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 7,
-                    mainAxisSpacing: 4.h(context),
+                    mainAxisSpacing: 0,
                     crossAxisSpacing: 5.w(context),
-                    childAspectRatio: 0.86,
+                    childAspectRatio: 1.05,
                   ),
                   itemBuilder: (context, index) {
                     return _CalendarDayCell(day: days[index]);
@@ -140,7 +140,7 @@ class _CalendarDayCell extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-          height: 7.h(context),
+          height: 6.h(context),
           child: Text(
             day.cycleCode ?? '',
             textAlign: TextAlign.center,
@@ -171,7 +171,7 @@ class _CalendarDayCell extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 4.h(context),
+          height: 3.h(context),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
