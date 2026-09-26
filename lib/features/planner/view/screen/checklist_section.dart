@@ -65,7 +65,7 @@ class ChecklistSection extends StatelessWidget {
                 );
               }),
             ),
-          ),
+          ), 
           SizedBox(height: 8.h(context)),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 18.w(context)),

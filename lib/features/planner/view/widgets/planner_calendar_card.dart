@@ -28,7 +28,7 @@ class PlannerCalendarCard extends StatelessWidget {
               22.h(context),
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFFFBF7F2),
+              color: LightThemeColors.cardBg,
               borderRadius: BorderRadius.circular(12.r(context)),
               boxShadow: [
                 BoxShadow(

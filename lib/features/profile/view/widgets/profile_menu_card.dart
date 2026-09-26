@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/features/profile/model/profile_model.dart';
 import 'package:lizziedow/features/profile/view/widgets/profile_menu_tile.dart';
@@ -18,7 +19,7 @@ class ProfileMenuCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Color(0xFFFBF7F2),
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(12.r(context)),
       ),
       clipBehavior: Clip.antiAlias,

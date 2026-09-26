@@ -52,7 +52,7 @@ class NotesNoteSection extends StatelessWidget {
           ),
           SizedBox(height: 22.h(context)),
           SectionHeader(
-            horizontalPadding: 0.0,    
+            horizontalPadding: 0.0,     
             title: 'Notes Added',
             trailing: Text(
               '${state.totalNotesCount} Total',

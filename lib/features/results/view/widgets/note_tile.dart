@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/circle_widgets.dart';
 import 'package:lizziedow/features/results/model/results_model.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class NoteTile extends StatelessWidget {
   const NoteTile({super.key, required this.note});
@@ -15,11 +17,7 @@ class NoteTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h(context)),
       child: Row(
         children: [
-          Icon(
-            Icons.note_alt_outlined,
-            color: LightThemeColors.darkBrown,
-            size: 17.sp(context),
-          ),
+          CircleIconWidgets(iconPath: Assets.images.fileNoteCheked.keyName,),
           SizedBox(width: 8.w(context)),
           Expanded(
             child: Column(

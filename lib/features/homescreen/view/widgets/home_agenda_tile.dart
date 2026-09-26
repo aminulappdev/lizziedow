@@ -1,7 +1,8 @@
-import 'package:crash_safe_image/crash_safe_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/circle_widgets.dart';
 
 class HomeAgendaTile extends StatelessWidget {
   const HomeAgendaTile({
@@ -18,7 +19,7 @@ class HomeAgendaTile extends StatelessWidget {
 
   final String icon; 
   final String title;
-  final String subtitle;
+  final String subtitle; 
   final List<HomeAgendaDetail> details;
   final VoidCallback? onViewAll;
 
@@ -27,22 +28,7 @@ class HomeAgendaTile extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: 50.w(context),
-          height: 50.w(context),
-          decoration: const BoxDecoration(
-            color: Color(0xFFF1E7DB),
-            shape: BoxShape.circle,
-          ),
-          child: Padding(
-            padding:  EdgeInsets.all(11.w(context)),
-            child: CrashSafeImage(
-              icon,
-              width: 24.w(context),
-              height: 24.h(context),
-            ),
-          ),
-        ),
+        CircleIconWidgets(iconPath: icon, iconRadius: 26.w(context),padding: 10,),
         SizedBox(width: 14.w(context)),
         Expanded(
           child: Column(

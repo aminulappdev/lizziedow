@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 
@@ -104,7 +105,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               fontWeight: FontWeight.w500,
             ),
             filled: true,
-            fillColor: widget.fillColor ?? Colors.white,
+            fillColor: widget.fillColor ?? LightThemeColors.cardBg,
             constraints: BoxConstraints(minHeight: 48.h(context)),
             contentPadding: EdgeInsets.symmetric(
               horizontal: 18.w(context),

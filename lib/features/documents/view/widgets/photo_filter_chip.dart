@@ -12,20 +12,20 @@ class PhotoFilterChip extends StatelessWidget {
   });
 
   final String label;
-  final bool isSelected;
+  final bool isSelected; 
   final VoidCallback onTap;
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: 16.w(context),
-          vertical: 12.h(context),
+          horizontal: 12.w(context),
+          vertical: 10.h(context),
         ),
         decoration: BoxDecoration(
-          color: isSelected ? LightThemeColors.buttonColor : Colors.white,
+          color: isSelected ? LightThemeColors.buttonColor : LightThemeColors.cardBg,
           borderRadius: BorderRadius.circular(100.r(context)),
           border: Border.all(color: const Color(0xFFF1EAE4)),
         ),

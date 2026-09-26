@@ -22,7 +22,7 @@ class ChecklistItemTile extends StatelessWidget {
         vertical: 14.h(context),
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(8.r(context)),
       ),
       child: Row(

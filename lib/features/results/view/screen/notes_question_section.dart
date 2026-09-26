@@ -49,7 +49,7 @@ class NotesQuestionSection extends StatelessWidget {
           SizedBox(height: 22.h(context)),
           SectionHeader(
             horizontalPadding: 0.0,
-            title: 'Questions',
+            title: 'Questions', 
             trailing: Text(
               '${state.totalNotesCount} Total',
               style: MyFonts.dmSans.copyWith(

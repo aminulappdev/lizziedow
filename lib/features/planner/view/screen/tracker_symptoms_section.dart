@@ -34,7 +34,7 @@ class _TrackerSymptomsSectionState extends State<TrackerSymptomsSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _TrackerOptionCard(
+          _TrackerOptionCard( 
             icon: Icons.favorite_border,
             title: "How's your mood today?",
             subtitle: 'Take a moment to check in with yourself.',
@@ -69,7 +69,7 @@ class _TrackerSymptomsSectionState extends State<TrackerSymptomsSection> {
           SizedBox(height: 12.h(context)),
 
           CustomTextField(
-            fillColor: const Color(0xFFFBF7F2),
+            fillColor: LightThemeColors.cardBg,
             hintText: 'Write here in detail...',
             controller: TextEditingController(),
             maxLines: 5,
@@ -87,7 +87,7 @@ class _TrackerOptionCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.options,
-  });
+  }); 
 
   final IconData icon;
   final String title;
@@ -105,7 +105,7 @@ class _TrackerOptionCard extends StatelessWidget {
         18.h(context),
       ),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFBF8),
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(8.r(context)),
       ),
       child: Column(

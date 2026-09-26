@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/features/onboarding/model/onboarding_item.dart';
@@ -13,13 +14,13 @@ class OnboardingCard extends StatelessWidget {
   final OnboardingItem item;
   final bool isSideCard;
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: (isSideCard ? 210 : 210).w(context),
       height: (isSideCard ? 220 : 240).h(context),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFCF8),
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(14.r(context)),
       ),
       padding: EdgeInsets.symmetric(

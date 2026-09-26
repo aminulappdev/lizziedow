@@ -12,7 +12,7 @@ class OnboardingCardsSlider extends StatelessWidget {
     required this.cards,
     required this.currentCard,
     required this.cardController, 
-  });
+  }); 
 
   final List<OnboardingItem> cards; 
   final int currentCard;

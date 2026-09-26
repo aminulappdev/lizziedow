@@ -71,7 +71,7 @@ class DocumentsContent extends StatelessWidget {
               Text(
                 'All Documents', 
                 style: MyFonts.dmSans.copyWith(
-                  color: LightThemeColors.darkBrown,
+                  color: LightThemeColors.darkBrown, 
                   fontSize: 14.sp(context),
                   fontWeight: FontWeight.w800,
                 ),

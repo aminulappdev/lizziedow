@@ -38,7 +38,7 @@ class JournalTile extends StatelessWidget {
               color: Colors.transparent,
               shape: BoxShape.circle,
               border: Border.all(
-                color: const Color(0xFFFBF7F2),
+                color: LightThemeColors.cardBg,
                 width: 1,
               ),
             ),

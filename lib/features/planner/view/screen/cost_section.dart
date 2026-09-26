@@ -55,7 +55,7 @@ class _CostSectionState extends State<CostSection> {
           ),
           SizedBox(height: 4.h(context)),
           Text(
-            'stay on top of all costs on your fertility journey',
+            'Stay on top of all costs on your fertility journey',
             textAlign: TextAlign.center,
             style: MyFonts.dmSans.copyWith(
               color: const Color(0xFF8A7C72),
@@ -90,7 +90,6 @@ class _CostSectionState extends State<CostSection> {
             children: [
               Expanded(
                 child: CustomTextField(
-                  
                   hintText: 'Enter amount',
                   controller: _amountController,
                   keyboardType: TextInputType.number,
@@ -130,7 +129,18 @@ class _CostSectionState extends State<CostSection> {
               const Expanded(
                 child: CustomDropdownField(
                   hintText: 'IVF Round',
-                  items: ['IVF Round 1', 'IVF Round 2', 'IVF Round 3'],
+                  items: [
+                    'IVF Round 1',
+                    'IVF Round 2',
+                    'IVF Round 3',
+                    'IVF Round 4',
+                    'IVF Round 5',
+                    'IVF Round 6',
+                    'IVF Round 7',
+                    'IVF Round 8',
+                    'IVF Round 9',
+                    'IVF Round 10',
+                  ],
                 ),
               ),
               SizedBox(width: 10.w(context)),

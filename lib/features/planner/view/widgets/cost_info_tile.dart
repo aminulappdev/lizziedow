@@ -21,7 +21,7 @@ class CostInfoTile extends StatelessWidget {
       height: 44.h(context),
       padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
       decoration: BoxDecoration(
-        color: Color(0xFFFBF7F2),
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(8.r(context)),
       ),
       child: Row(

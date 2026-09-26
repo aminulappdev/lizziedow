@@ -7,6 +7,7 @@ class LightThemeColors {
   static Color lightBrown = Color(0xFF705446);
   static Color darkBrown = Color(0xFF3C3431);
   static Color baseBrown = Color(0xFFF9F6F0); 
+  static Color cardBg = Color(0xFFFBF7F2); 
 
   // SECONDARY
   static Color accentColor = const Color(0xFFEDF1F3);

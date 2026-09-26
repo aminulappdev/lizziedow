@@ -77,7 +77,7 @@ class ResultsContent extends StatelessWidget {
           Row(
             children: [
               Text(
-                'All Reports',
+                'All Reports', 
                 style: MyFonts.dmSans.copyWith(
                   color: LightThemeColors.darkBrown,
                   fontSize: 14.sp(context),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/circle_widgets.dart';
 
 class CustomTile extends StatelessWidget {
   const CustomTile({
@@ -15,10 +16,10 @@ class CustomTile extends StatelessWidget {
     this.trailingWidget,
   });
 
-  final String title;
+  final String title; 
   final String subtitle01;
   final String subtitle02;
-  final String iconPath;
+  final String iconPath; 
   final Widget? trailingWidget;
   final bool showDivider;
 
@@ -36,26 +37,7 @@ class CustomTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.h(context)),
       child: Row(
         children: [
-          Container(
-            width: 34.w(context),
-            height: 34.w(context),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: const Color(0xFFFBF7F2),
-                width: 1,
-              ),
-            ),
-            child: Center(
-              child: CrashSafeImage(
-                iconPath,
-                width: 18.w(context),
-                height: 18.h(context),
-                color: LightThemeColors.darkBrown,
-              ),
-            ),
-          ),
+          CircleIconWidgets(iconPath: iconPath,),
           SizedBox(width: 12.w(context)),
           Expanded(
             child: Column(
@@ -117,3 +99,5 @@ class CustomTile extends StatelessWidget {
     );
   }
 }
+
+

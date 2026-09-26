@@ -18,6 +18,10 @@ class $AssetsImagesGen {
   AssetGenImage get arrowRight =>
       const AssetGenImage('assets/images/arrow_right.png');
 
+  /// File path: assets/images/calendarEmpty.png
+  AssetGenImage get calendarEmpty =>
+      const AssetGenImage('assets/images/calendarEmpty.png');
+
   /// File path: assets/images/calender.png
   AssetGenImage get calender =>
       const AssetGenImage('assets/images/calender.png');
@@ -132,6 +136,14 @@ class $AssetsImagesGen {
   AssetGenImage get moodSad =>
       const AssetGenImage('assets/images/mood_sad.png');
 
+  /// File path: assets/images/new_file.png
+  AssetGenImage get newFile =>
+      const AssetGenImage('assets/images/new_file.png');
+
+  /// File path: assets/images/new_galary.png
+  AssetGenImage get newGalary =>
+      const AssetGenImage('assets/images/new_galary.png');
+
   /// File path: assets/images/news.png
   AssetGenImage get news => const AssetGenImage('assets/images/news.png');
 
@@ -145,6 +157,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/person_02.png
   AssetGenImage get person02 =>
       const AssetGenImage('assets/images/person_02.png');
+
+  /// File path: assets/images/pill.png
+  AssetGenImage get pill => const AssetGenImage('assets/images/pill.png');
 
   /// File path: assets/images/plus.png
   AssetGenImage get plus => const AssetGenImage('assets/images/plus.png');
@@ -167,6 +182,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     arrowRight,
+    calendarEmpty,
     calender,
     calender02,
     calenderChek,
@@ -197,10 +213,13 @@ class $AssetsImagesGen {
     moodHappy,
     moodNeutral,
     moodSad,
+    newFile,
+    newGalary,
     news,
     notofication,
     person,
     person02,
+    pill,
     plus,
     quetions,
     vert,

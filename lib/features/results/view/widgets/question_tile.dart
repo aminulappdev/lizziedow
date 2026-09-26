@@ -17,10 +17,19 @@ class QuestionTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h(context)), 
       child: Row(
         children: [
-         CrashSafeImage(
-           Assets.images.fileQuestion.path,
-           width: 24.w(context),
-           height: 24.h(context),
+         Container(
+           decoration: BoxDecoration(
+             border: Border.all(color: LightThemeColors.cardBg, width: 1),
+             shape: BoxShape.circle,
+           ),
+           child: Padding(
+             padding:  EdgeInsets.all(6.0),
+             child: CrashSafeImage(
+               Assets.images.fileQuestion.path,
+               width: 20.w(context),
+               height: 20.h(context),
+             ),
+           ),
          ),
           SizedBox(width: 8.w(context)),
           Expanded(

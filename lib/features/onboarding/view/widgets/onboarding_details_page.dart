@@ -14,7 +14,7 @@ class OnboardingDetailsPage extends StatelessWidget {
     required this.currentPage,
     required this.currentCard,
     required this.cardController,
-  });
+  }); 
 
   final List<OnboardingItem> cards;
   final int currentPage;

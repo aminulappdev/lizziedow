@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 import 'package:lizziedow/core/widgets/custom_text_field.dart';
 import 'package:lizziedow/features/homescreen/view/widgets/mood_history_bottom_sheet.dart';
@@ -59,7 +60,7 @@ class SymptomLogPanel extends StatelessWidget {
           //   ),
           // ),
           CustomTextField(
-            fillColor: const Color(0xFFFBF7F2),
+            fillColor: LightThemeColors.cardBg,
             hintText: 'Write here in detail...',     
             controller: TextEditingController(),
             maxLines: 5,

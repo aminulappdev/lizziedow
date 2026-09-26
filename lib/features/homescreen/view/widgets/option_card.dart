@@ -25,7 +25,7 @@ class OptionCard extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(18.r(context)),
       decoration: BoxDecoration(
-        color: Color(0xFFFBF7F2),
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(8.r(context)),
       ),
       child: Column(

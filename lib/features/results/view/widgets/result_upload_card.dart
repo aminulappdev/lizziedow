@@ -32,7 +32,7 @@ class CustomUploadCard extends StatelessWidget {
         vertical: 24.h(context),
       ),
       decoration: BoxDecoration(
-        color: Color(0xFFFBF7F2),
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(14.r(context)),
       ),
       child: Column(

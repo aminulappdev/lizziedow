@@ -23,8 +23,8 @@ class HomeMoodButton extends StatelessWidget {
             height: 50.w(context),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: LightThemeColors.scaffoldBackgroundColor,
-              border: Border.all(color: _dividerColor),
+              color: Color(0xFFF2E5D8),
+              // border: Border.all(color: _dividerColor),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),

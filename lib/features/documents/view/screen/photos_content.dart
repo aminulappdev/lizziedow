@@ -88,12 +88,12 @@ class PhotosContent extends StatelessWidget {
               }),
             ),
           ),
-          SizedBox(height: 22.h(context)),
+          SizedBox(height: 22.h(context)), 
           SectionHeader(
             horizontalPadding: 0.0,
             title: 'All Images',
             trailing: Text(
-              '${state.totalPhotoCount} Total',
+              '${state.totalPhotoCount} Total', 
               style: MyFonts.dmSans.copyWith(
                 color: LightThemeColors.darkBrown,
                 fontSize: 10.sp(context),

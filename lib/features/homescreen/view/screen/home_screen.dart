@@ -25,10 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeMoodItem(label: 'Calm', icon: Assets.images.moodClam.keyName),
     HomeMoodItem(label: 'Neutral', icon: Assets.images.moodNeutral.keyName),
     HomeMoodItem(label: 'Sad', icon: Assets.images.moodSad.keyName),
-    HomeMoodItem(
-      label: 'Anxious',
-      icon: Assets.images.moodAnxious.keyName,
-    ),
+    HomeMoodItem(label: 'Anxious', icon: Assets.images.moodAnxious.keyName),
   ];
 
   @override
@@ -65,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
 
-        SizedBox(height: 16.h(context)),
+        SizedBox(height: 14.h(context)),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
           child: Text(
@@ -73,13 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
             textAlign: TextAlign.center,
             style: MyFonts.instrumentSerif.copyWith(
               color: const Color(0xFF5D514B),
-              fontSize: 15.sp(context),
+              fontSize: 14.5.sp(context),
               fontWeight: FontWeight.w500,
               height: 1.18,
             ),
           ),
         ),
-        SizedBox(height: 36.h(context)),
+        SizedBox(height: 60.h(context)),
         const HomeCycleStatus(),
         SizedBox(height: 38.h(context)),
         Row(
@@ -89,21 +86,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 'How Are You Feeling Today?',
                 style: MyFonts.instrumentSerif.copyWith(
                   color: _textColor,
-                  fontSize: 17.sp(context),
+                  fontSize: 18.sp(context),
                   fontWeight: FontWeight.w700,
                 ),
               ),
             ),
             Text(
-              'Log mood',
+              'Log mood +',
               style: MyFonts.dmSans.copyWith(
                 color: _mutedColor,
-                fontSize: 12.sp(context),
+                fontSize: 13.sp(context),
                 fontWeight: FontWeight.w700,
               ),
             ),
-            SizedBox(width: 8.w(context)),
-            Icon(Icons.add, color: _textColor, size: 15.sp(context)),
           ],
         ),
         SizedBox(height: 18.h(context)),
@@ -113,9 +108,9 @@ class _HomeScreenState extends State<HomeScreen> {
               .map((mood) => HomeMoodButton(mood: mood))
               .toList(growable: false),
         ),
-        SizedBox(height: 30.h(context)),
+        SizedBox(height: 50.h(context)),
         HomeAgendaTile(
-          icon: Assets.images.calender02.keyName,
+          icon: Assets.images.calendarEmpty.keyName,
           title: 'Next appointment',
           subtitle: 'Blood test',
           details: const [
@@ -125,23 +120,25 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
           onViewAll: () {
             Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => const HomeAppointmentsScreen(),
-              ),
+              MaterialPageRoute(builder: (_) => const HomeAppointmentsScreen()),
             );
           },
         ),
-        SizedBox(height: 24.h(context)),
+        SizedBox(height: 12.h(context)),
+        Container(
+          height: 0.8,
+          width: double.infinity,
+          color: Color(0xFF7B6654).withValues(alpha: 0.1),
+        ),
+        SizedBox(height: 12.h(context)),
         HomeAgendaTile(
-          icon: Assets.images.medichine.keyName,
+          icon: Assets.images.pill.keyName,
           title: 'Next medication',
           subtitle: 'Vitamin D3 + K2',
           details: const [HomeAgendaDetail(Icons.schedule, 'Today - 8:00 AM')],
           onViewAll: () {
             Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => const HomeMedicationsScreen(),
-              ),
+              MaterialPageRoute(builder: (_) => const HomeMedicationsScreen()),
             );
           },
         ),

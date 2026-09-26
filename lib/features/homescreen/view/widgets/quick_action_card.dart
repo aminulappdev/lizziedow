@@ -24,7 +24,7 @@ class QuickActionCard extends StatelessWidget {
         vertical: 12.h(context),
       ),
       decoration: BoxDecoration(
-        color: Color(0xFFFBF7F2),
+        color: LightThemeColors.cardBg,
         borderRadius: BorderRadius.circular(9.r(context)),
       ),
       child: Column(

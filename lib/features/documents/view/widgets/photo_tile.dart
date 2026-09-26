@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
+import 'package:lizziedow/core/widgets/circle_widgets.dart';
 import 'package:lizziedow/features/documents/model/documents_model.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class PhotoTile extends StatelessWidget {
   const PhotoTile({super.key, required this.photo});
@@ -15,10 +17,10 @@ class PhotoTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 11.h(context)),
       child: Row(
         children: [
-          Icon(
-            Icons.image_outlined,
-            color: LightThemeColors.darkBrown,
-            size: 19.sp(context),
+          CircleIconWidgets(
+            iconPath: Assets.images.newGalary.keyName,
+            iconRadius: 24.w(context),
+            padding: 4,
           ),
           SizedBox(width: 9.w(context)),
           Expanded(

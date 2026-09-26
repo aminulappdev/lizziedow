@@ -40,7 +40,7 @@ class _TrackerCycleSectionState extends State<TrackerCycleSection> {
                 Assets.images.calender02.path,
                 width: 24.w(context),
                 height: 24.h(context),
-              ),
+              ), 
               SizedBox(width: 8.w(context)),
               Text(
                 'Cycle start',
@@ -65,6 +65,7 @@ class _TrackerCycleSectionState extends State<TrackerCycleSection> {
           ),
           SizedBox(height: 24.h(context)),
           CustomTextField(
+            fillColor: LightThemeColors.cardBg,
             hintText: 'Start date',
             controller: _startDateController,
             readOnly: true,
@@ -80,6 +81,7 @@ class _TrackerCycleSectionState extends State<TrackerCycleSection> {
           ),
           SizedBox(height: 16.h(context)),
           CustomTextField(
+            fillColor: LightThemeColors.cardBg,
             hintText: 'End date',
             controller: _endDateController,
             readOnly: true,
@@ -95,12 +97,13 @@ class _TrackerCycleSectionState extends State<TrackerCycleSection> {
           ),
           SizedBox(height: 16.h(context)),
           const CustomDropdownField(
+            
             hintText: 'Enter cycle length',
             items: ['21 days', '22 days', '23 days'],
           ),
           SizedBox(height: 100.h(context)),
           Text(
-            'Today is Day 59 of cycle 01.',
+            'Today is Day 59 of cycle 1.',
             style: MyFonts.dmSans.copyWith(
               color: const Color(0xFF7D7169),
               fontSize: 12.sp(context),

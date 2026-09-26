@@ -8,6 +8,7 @@ import 'package:lizziedow/features/dashboard/bloc/dashboard_bloc.dart';
 import 'package:lizziedow/features/dashboard/bloc/dashboard_event.dart';
 import 'package:lizziedow/features/dashboard/bloc/dashboard_state.dart';
 import 'package:lizziedow/features/dashboard/view/widgets/nav_bar_item.dart';
+import 'package:lizziedow/gen/assets.gen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -37,15 +38,15 @@ class DashboardScreen extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: MyFonts.instrumentSerif.copyWith(
                               color: const Color(0xFF1F1A17),
-                              fontSize: 27.sp(context),
+                              fontSize: 30.sp(context),
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
-                        Icon(
-                          Icons.notifications_none_outlined,
-                          color: const Color(0xFF7E6E63),
-                          size: 28.sp(context),
+                        CrashSafeImage(
+                          Assets.images.notofication.path,
+                          width: 24.w(context),
+                          height: 24.h(context),
                         ),
                       ],
                     ),
@@ -61,8 +62,8 @@ class DashboardScreen extends StatelessWidget {
             ),
             bottomNavigationBar: Container(
               height: 82.h(context),
-              decoration: const BoxDecoration(
-                color: Color(0xFFFBF7F2),
+              decoration: BoxDecoration(
+                color: LightThemeColors.cardBg,
                 border: Border(top: BorderSide(color: Color(0xFFF0E7DC))),
               ),
               child: SafeArea(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lizziedow/app/theme/light_theme_colors.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 
@@ -74,7 +75,7 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
         fontSize: 13.sp(context),
         fontWeight: FontWeight.w500,
       ),
-      dropdownColor: Colors.white,
+      dropdownColor: LightThemeColors.cardBg,
       decoration: InputDecoration(
         hintText: widget.hintText,
         hintStyle: MyFonts.dmSans.copyWith(
@@ -83,7 +84,7 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
           fontWeight: FontWeight.w500,
         ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: LightThemeColors.cardBg,
         constraints: BoxConstraints(minHeight: 48.h(context)),
         contentPadding: EdgeInsets.symmetric(
           horizontal: 18.w(context),
@@ -105,11 +106,7 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
       items: widget.items.map((item) {
         return DropdownMenuItem<String>(
           value: item,
-          child: Text(
-            item,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
+          child: Text(item, maxLines: 1, overflow: TextOverflow.ellipsis),
         );
       }).toList(),
       onChanged: (value) {

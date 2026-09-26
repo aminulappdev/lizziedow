@@ -36,12 +36,12 @@ class TrackerMedicineTile extends StatelessWidget {
           Container(
             width: 34.w(context),
             height: 34.w(context),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.transparent,
               shape: BoxShape.circle,
               border: Border.fromBorderSide(
                 BorderSide(
-                  color: Color(0xFFFBF7F2),
+                  color: LightThemeColors.cardBg,
                   width: 1,
                 ),
               ),

@@ -131,7 +131,7 @@ class AuthConsentBottomSheet extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                  ),
+                  ), 
                   SizedBox(height: 14.h(context)),
                   Divider(
                     height: 1.h(context),

@@ -11,7 +11,7 @@ class ConsentFooterNote extends StatelessWidget {
   final String text;
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
