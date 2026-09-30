@@ -46,9 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 'Good Morning, Jane',
-                style: MyFonts.instrumentSerif.copyWith(
+                style: MyFonts.playfairDisplay.copyWith(
                   color: _textColor,
-                  fontSize: 26.sp(context),
+                  fontSize: 22.sp(context),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -68,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Text(
             '"Believe In The Power Of Your Body, The Wisdom Of Your Heart,\nAnd The Resilience Of Your Spirit."',
             textAlign: TextAlign.center,
-            style: MyFonts.instrumentSerif.copyWith(
+            style: MyFonts.playfairDisplay.copyWith(
               color: const Color(0xFF5D514B),
-              fontSize: 14.5.sp(context),
+              fontSize: 10.5.sp(context),
               fontWeight: FontWeight.w500,
               height: 1.18,
             ),
@@ -84,9 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Text(
                 'How Are You Feeling Today?',
-                style: MyFonts.instrumentSerif.copyWith(
+                style: MyFonts.playfairDisplay.copyWith(
                   color: _textColor,
-                  fontSize: 18.sp(context),
+                  fontSize: 14.sp(context),
                   fontWeight: FontWeight.w700,
                 ),
               ),

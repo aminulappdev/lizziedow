@@ -26,9 +26,9 @@ class PhotosContent extends StatelessWidget {
         children: [
           Text(
             'Photo Memories',
-            style: MyFonts.instrumentSerif.copyWith(
+            style: MyFonts.playfairDisplay.copyWith(
               color: LightThemeColors.darkBrown,
-              fontSize: 28.sp(context),
+              fontSize: 24.sp(context),
               fontWeight: FontWeight.w500,
             ),
           ),

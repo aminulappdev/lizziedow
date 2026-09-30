@@ -42,9 +42,9 @@ class QuickActionCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
-            style: MyFonts.instrumentSerif.copyWith(
+            style: MyFonts.playfairDisplay.copyWith(
               color: const Color(0xFF4A403A),
-              fontSize: 20.sp(context),
+              fontSize: 16.sp(context),
               fontWeight: FontWeight.w600,
             ),
           ),

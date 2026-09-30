@@ -10,7 +10,7 @@ class HomeAgendaTile extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.subtitle,
-    required this.details, 
+    required this.details,  
     this.onViewAll,
   });
 
@@ -40,9 +40,9 @@ class HomeAgendaTile extends StatelessWidget {
                   Expanded(
                     child: Text(
                       title,
-                      style: MyFonts.instrumentSerif.copyWith(
+                      style: MyFonts.playfairDisplay.copyWith(
                         color: _textColor,
-                        fontSize: 24.sp(context),
+                        fontSize: 20.sp(context),
                         fontWeight: FontWeight.w500,
                         height: 1,
                       ),

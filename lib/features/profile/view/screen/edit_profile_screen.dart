@@ -43,9 +43,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 children: [
                   Text(
                     'Edit Profile',
-                    style: MyFonts.instrumentSerif.copyWith(
+                    style: MyFonts.playfairDisplay.copyWith(
                       color: LightThemeColors.darkBrown,
-                      fontSize: 24.sp(context),
+                      fontSize: 20.sp(context),
                       fontWeight: FontWeight.w500,
                     ),
                   ),

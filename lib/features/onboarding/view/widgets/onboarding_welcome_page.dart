@@ -22,14 +22,14 @@ class OnboardingWelcomePage extends StatelessWidget {
         ),
         SizedBox(height: 100.h(context)),
         OnboardingPageDots(currentPage: currentPage),
-        SizedBox(height: 18.h(context)),
+        SizedBox(height: 18.h(context)), 
         Text(
           'Welcome to the\nsisterhood',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontFamily: MyFonts.instrumentSerif.fontFamily, 
-                fontWeight: FontWeight.w600,
-                fontSize: 38.sp(context),
+                fontFamily: MyFonts.playfairDisplay.fontFamily,
+                fontWeight: FontWeight.w500,
+                fontSize: 34.sp(context),
                 color: const Color(0xFF1E1E1E),
               ),
         ),

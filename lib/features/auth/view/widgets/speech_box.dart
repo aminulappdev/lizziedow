@@ -22,9 +22,9 @@ class SpeechBox extends StatelessWidget {
       child: Text(
         '"Believe In The Power Of Your Body, The Wisdom Of Your Heart, And The Resilience Of Your Spirit."',
         textAlign: TextAlign.center,
-        style: MyFonts.instrumentSerif.copyWith(
+        style: MyFonts.playfairDisplay.copyWith(
           color: const Color(0xFF6F6258),
-          fontSize: 13.sp(context),
+          fontSize: 9.sp(context),
           height: 1.2,
           fontWeight: FontWeight.w500,
         ),

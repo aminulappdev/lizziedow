@@ -15,9 +15,9 @@ class HomeCycleStatus extends StatelessWidget {
       children: [
         Text(
           'Cycle Day 12',
-          style: MyFonts.instrumentSerif.copyWith(
+          style: MyFonts.playfairDisplay.copyWith(
             color: _mutedColor,
-            fontSize: 16.sp(context),
+            fontSize: 12.sp(context),
             fontWeight: FontWeight.w700,
           ),
         ),

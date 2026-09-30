@@ -55,9 +55,9 @@ class ConsentOptionCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: MyFonts.instrumentSerif.copyWith(
+                  style: MyFonts.playfairDisplay.copyWith(
                     color: LightThemeColors.darkBrown,
-                    fontSize: 18.sp(context),
+                    fontSize: 14.sp(context),
                     fontWeight: FontWeight.w500,
                   ),
                 ),

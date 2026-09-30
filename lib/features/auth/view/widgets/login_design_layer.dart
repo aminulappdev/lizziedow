@@ -32,9 +32,9 @@ class LoginDesignLayer extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: MyFonts.instrumentSerif.copyWith(
+          style: MyFonts.playfairDisplay.copyWith(
             color: const Color(0xFF1F1A17),
-            fontSize: 42.sp(context),
+            fontSize: 38.sp(context),
             height: 1.1,
             fontWeight: FontWeight.w500,
           ),

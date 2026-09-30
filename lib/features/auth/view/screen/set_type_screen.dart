@@ -61,9 +61,9 @@ class SetTypeScreen extends StatelessWidget {
               Text(
                 'Good Morning',
                 textAlign: TextAlign.center,
-                style: MyFonts.instrumentSerif.copyWith(
+                style: MyFonts.playfairDisplay.copyWith(
                   color: const Color(0xFFB7ACA4),
-                  fontSize: 28.sp(context),
+                  fontSize: 24.sp(context),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -73,9 +73,9 @@ class SetTypeScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Jane',
-                    style: MyFonts.instrumentSerif.copyWith(
+                    style: MyFonts.playfairDisplay.copyWith(
                       color: const Color(0xFF1F1A17),
-                      fontSize: 34.sp(context),
+                      fontSize: 30.sp(context),
                       fontWeight: FontWeight.w500,
                     ),
                   ),

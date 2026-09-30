@@ -23,9 +23,9 @@ class DocumentsContent extends StatelessWidget {
         children: [
           Text(
             'Documents',
-            style: MyFonts.instrumentSerif.copyWith(
+            style: MyFonts.playfairDisplay.copyWith(
               color: LightThemeColors.darkBrown,
-              fontSize: 28.sp(context),
+              fontSize: 24.sp(context),
               fontWeight: FontWeight.w500,
             ),
           ),

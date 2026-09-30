@@ -26,9 +26,9 @@ class ProfilePageHeader extends StatelessWidget {
             child: Text(
               'Fertility Sisterhood',
               textAlign: TextAlign.center,
-              style: MyFonts.instrumentSerif.copyWith(
+              style: MyFonts.playfairDisplay.copyWith(
                 color: const Color(0xFF1F1A17),
-                fontSize: 27.sp(context),
+                fontSize: 23.sp(context),
                 fontWeight: FontWeight.w500,
               ),
             ),

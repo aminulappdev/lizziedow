@@ -32,8 +32,8 @@ class OnboardingCard extends StatelessWidget {
         children: [
           Text(
             item.number,
-            style: MyFonts.instrumentSerif.copyWith(
-              fontSize: (isSideCard ? 20 : 30).sp(context),
+            style: MyFonts.playfairDisplay.copyWith(
+              fontSize: (isSideCard ? 16 : 26).sp(context),
               fontWeight: FontWeight.w500,
               color: const Color(0xFF9B8B7F),
             ),
@@ -44,8 +44,8 @@ class OnboardingCard extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: MyFonts.instrumentSerif.copyWith(
-              fontSize: (isSideCard ? 16 : 24).sp(context),
+            style: MyFonts.playfairDisplay.copyWith(
+              fontSize: (isSideCard ? 12 : 20).sp(context),
               height: 1,
               fontWeight: FontWeight.w600,
               color: const Color(0xFF403731),

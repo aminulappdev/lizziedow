@@ -6,6 +6,7 @@ class MyFonts {
   static TextStyle get manrope => GoogleFonts.manrope();
   static TextStyle get dmSans => GoogleFonts.dmSans();
   static TextStyle get instrumentSerif => GoogleFonts.instrumentSerif();
+  static TextStyle get playfairDisplay => GoogleFonts.playfairDisplay();
   static TextStyle get inter => GoogleFonts.inter();
 
   static TextStyle get appTextStyle => inter;

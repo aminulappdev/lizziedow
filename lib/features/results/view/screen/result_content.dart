@@ -31,9 +31,9 @@ class ResultsContent extends StatelessWidget {
               SizedBox(width: 7.w(context)),
               Text(
                 'Test Results',
-                style: MyFonts.instrumentSerif.copyWith(
+                style: MyFonts.playfairDisplay.copyWith(
                   color: LightThemeColors.darkBrown,
-                  fontSize: 26.sp(context),
+                  fontSize: 22.sp(context),
                   fontWeight: FontWeight.w500,
                 ),
               ),

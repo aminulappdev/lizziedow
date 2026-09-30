@@ -44,10 +44,10 @@ class OnboardingDetailsPage extends StatelessWidget {
         Text(
           'Feel more in control,\nevery day',
           textAlign: TextAlign.center,
-          style: MyFonts.instrumentSerif.copyWith(
-            fontSize: 36.sp(context),
+          style: MyFonts.playfairDisplay.copyWith(
+            fontSize: 32.sp(context),
             height: 0.9,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w500,
             color: const Color(0xFF403731),
           ),
         ),
