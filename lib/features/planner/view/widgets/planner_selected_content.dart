@@ -148,7 +148,7 @@ class _PlannerJournalsContent extends StatelessWidget {
 
   final List<PlannerJournalData> journals;
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Column(
       children: [

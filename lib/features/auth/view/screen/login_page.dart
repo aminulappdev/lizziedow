@@ -15,6 +15,7 @@ import 'package:lizziedow/features/auth/view/widgets/login_design_layer.dart';
 import 'package:lizziedow/features/auth/view/widgets/login_devider.dart';
 import 'package:lizziedow/features/auth/view/widgets/password_visibility_icon.dart';
 import 'package:lizziedow/features/onboarding/view/widgets/custom_button.dart';
+import 'package:lizziedow/features/profile/repository/profile_repository.dart';
 import 'package:lizziedow/gen/assets.gen.dart';
 
 class LoginPage extends StatefulWidget {
@@ -29,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
+  bool _acceptedTerms = false;
 
   @override
   void dispose() {
@@ -60,6 +62,32 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     );
+  }
+
+  void _openTermsAndConditions() {
+    const profileRepository = ProfileRepository();
+
+    Navigator.pushNamed(
+      context,
+      RoutesName.profileInfoScreen,
+      arguments: {
+        'header': 'Terms & Conditions',
+        'data': profileRepository.termsConditions,
+      },
+    );
+  }
+
+  void _continueLogin() {
+    if (!_acceptedTerms) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please agree to the Terms & Conditions.'),
+        ),
+      );
+      return;
+    }
+
+    _showConsentBottomSheet(context);
   }
 
   @override
@@ -142,8 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                                 AuthPasswordChanged(value),
                               );
                             },
-                            onFieldSubmitted: (_) =>
-                                _showConsentBottomSheet(context),
+                            onFieldSubmitted: (_) => _continueLogin(),
                           ),
                           SizedBox(height: 10.h(context)),
                           Align(
@@ -167,13 +194,96 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
+                          SizedBox(height: 16.h(context)),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 12.w(context),
+                                height: 12.w(context),
+                                child: Transform.scale(
+                                  scale: 0.75,
+                                  child: Checkbox(
+                                    value: _acceptedTerms,
+                                    onChanged: isLoading
+                                        ? null
+                                        : (value) {
+                                            setState(() {
+                                              _acceptedTerms = value ?? false;
+                                            });
+                                          },
+                                    activeColor: LightThemeColors.darkBrown,
+                                    checkColor: Colors.white,
+                                    side: const BorderSide(
+                                      color: Color(0xFFB6AAA0),
+                                      width: 1.2,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        4.r(context),
+                                      ),
+                                    ),
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    visualDensity: VisualDensity.compact,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 8.w(context)),
+                              Expanded(
+                                child: Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  children: [
+                                    Text(
+                                      'I agree to the ',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                            color: const Color(0xFF8F837A),
+                                            fontSize: 12.sp(context),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: _openTermsAndConditions,
+                                      child: Text(
+                                        'Terms & Conditions',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.copyWith(
+                                              color: const Color(0xFF403731),
+                                              fontSize: 12.sp(context),
+                                              fontWeight: FontWeight.w500,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                      ),
+                                    ),
+                                    Text(
+                                      '.',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                            color: const Color(0xFF8F837A),
+                                            fontSize: 12.sp(context),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                           SizedBox(height: 24.h(context)),
                           CustomButton(
                             text: isLoading ? 'Loading...' : 'Login',
                             onPressed: isLoading
                                 ? null
                                 : () {
-                                    _showConsentBottomSheet(context);
+                                    _continueLogin();
                                   },
                           ),
                           SizedBox(height: 24.h(context)),

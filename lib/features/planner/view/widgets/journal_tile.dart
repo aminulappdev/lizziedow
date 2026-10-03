@@ -21,7 +21,7 @@ class JournalTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(
+        border: Border( 
           bottom: BorderSide(
             color: showDivider ? const Color(0xFFDCCFC3) : Colors.transparent,
             width: 1,
@@ -35,7 +35,7 @@ class JournalTile extends StatelessWidget {
             width: 34.w(context),
             height: 34.w(context),
             decoration: BoxDecoration(
-              color: Colors.transparent,
+              color: LightThemeColors.cardBg,
               shape: BoxShape.circle,
               border: Border.all(
                 color: LightThemeColors.cardBg,

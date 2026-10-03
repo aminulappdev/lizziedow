@@ -51,7 +51,7 @@ class TrackerMedicationSection extends StatelessWidget {
             onPressed: () {
               showModalBottomSheet<void>(
                 context: context,
-                isScrollControlled: true,
+                isScrollControlled: true, 
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(

@@ -20,7 +20,7 @@ class SpeechBox extends StatelessWidget {
         border: Border.all(color: Colors.white.withOpacity(0.65)),
       ),
       child: Text(
-        '"Believe In The Power Of Your Body, The Wisdom Of Your Heart, And The Resilience Of Your Spirit."',
+        '"Believe in the power of your body, the wisdom of your heart, and the resilience of your spirit."',
         textAlign: TextAlign.center,
         style: MyFonts.playfairDisplay.copyWith(
           color: const Color(0xFF6F6258),

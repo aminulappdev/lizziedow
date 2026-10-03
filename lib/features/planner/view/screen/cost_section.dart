@@ -44,13 +44,13 @@ class _CostSectionState extends State<CostSection> {
         top: 28.h(context),
       ),
       child: Column(
-        children: [
+        children: [ 
           Text(
             'Cost Tracker',
-            style: MyFonts.dmSans.copyWith(
+            style: MyFonts.playfairDisplay.copyWith(
               color: LightThemeColors.darkBrown,
               fontSize: 24.sp(context),
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(height: 4.h(context)),

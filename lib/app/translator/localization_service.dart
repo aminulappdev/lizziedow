@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/share_preference.dart';
 import 'ar_AR/ar_ar_translation.dart';
 import 'en_US/en_us_translation.dart';
@@ -31,8 +31,8 @@ class LocalizationService extends Translations {
   // supported languages fonts family (must be in assets & pubspec yaml) or you can use google fonts
   static Map<String, TextStyle> supportedLanguagesFontsFamilies = {
     // todo add your English font families (add to assets/fonts, pubspec and name it here) default is poppins for english and cairo for arabic
-    'en': GoogleFonts.inter(),
-    'ar': GoogleFonts.inter(),
+    'en': MyFonts.dmSans,
+    'ar': MyFonts.dmSans,
   };
 
   @override

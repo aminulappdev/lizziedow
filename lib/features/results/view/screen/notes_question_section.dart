@@ -24,13 +24,13 @@ class NotesQuestionSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 18.w(context)),
       child: Column(
         children: [
-          Text(
+          Text( 
             'Questions For Next\nAppointments',
             textAlign: TextAlign.center,
-            style: MyFonts.dmSans.copyWith(
+            style: MyFonts.playfairDisplay.copyWith(
               color: LightThemeColors.darkBrown,
               fontSize: 22.sp(context),
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w600,
               height: 1.05,
             ),
           ),

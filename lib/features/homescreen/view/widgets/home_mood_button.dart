@@ -14,7 +14,7 @@ class HomeMoodButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 54.w(context),
+      width: 54.w(context), 
       child: Column(
         children: [
           Container(
@@ -22,7 +22,7 @@ class HomeMoodButton extends StatelessWidget {
             height: 50.w(context),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0xFFF2E5D8),
+              color: Color.fromARGB(255, 235, 220, 206),
               // border: Border.all(color: _dividerColor),
             ),
             child: Padding(

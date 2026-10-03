@@ -32,12 +32,12 @@ class CheckListHeaderData extends StatelessWidget {
              height: 24.h(context),
            ),
             SizedBox(width: 6.w(context)),
-            Text(
+            Text( 
               'IVF Checklist',
-              style: MyFonts.dmSans.copyWith(
+              style: MyFonts.playfairDisplay.copyWith(
                 color: LightThemeColors.darkBrown,
                 fontSize: 24.sp(context),
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],

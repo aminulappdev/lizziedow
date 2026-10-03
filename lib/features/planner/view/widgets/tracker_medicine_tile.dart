@@ -16,7 +16,7 @@ class TrackerMedicineTile extends StatelessWidget {
  
   final String title;
   final String detail;
-  final bool isTakenToday;
+  final bool isTakenToday; 
   final bool showDivider;
 
   @override
@@ -37,7 +37,7 @@ class TrackerMedicineTile extends StatelessWidget {
             width: 34.w(context),
             height: 34.w(context),
             decoration: BoxDecoration(
-              color: Colors.transparent,
+              color: LightThemeColors.cardBg,
               shape: BoxShape.circle,
               border: Border.fromBorderSide(
                 BorderSide(

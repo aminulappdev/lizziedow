@@ -12,14 +12,14 @@ class CircleIconWidgets extends StatelessWidget {
   });
 
   final String iconPath;
-  final double? iconRadius;
+  final double? iconRadius; 
   final double? padding;
  
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: LightThemeColors.cardBg,
         shape: BoxShape.circle,
         border: Border.all(color: LightThemeColors.cardBg, width: 1),
       ),

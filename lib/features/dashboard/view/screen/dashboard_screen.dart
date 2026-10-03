@@ -29,7 +29,7 @@ class DashboardScreen extends StatelessWidget {
                       horizontal: 22.w(context),
                       vertical: 18.h(context),
                     ),
-                    child: Row(
+                    child: Row( 
                       children: [
                         SizedBox(width: 28.w(context)),
                         Expanded(

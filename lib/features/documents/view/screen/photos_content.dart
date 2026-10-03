@@ -34,7 +34,7 @@ class PhotosContent extends StatelessWidget {
           ),
           SizedBox(height: 8.h(context)),
           Text(
-            'a private place to keep milestones, ultrasounds\nand small moments of your journey',
+            'A private place to keep milestones, ultrasounds\nand small moments of your journey',
             textAlign: TextAlign.center,
             style: MyFonts.dmSans.copyWith(
               color: const Color(0xFF8F837A),

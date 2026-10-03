@@ -35,6 +35,7 @@ class _TrackerCycleSectionState extends State<TrackerCycleSection> {
           SizedBox(height: 10.h(context)),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CrashSafeImage(
                 Assets.images.calender02.path,
@@ -44,11 +45,11 @@ class _TrackerCycleSectionState extends State<TrackerCycleSection> {
               SizedBox(width: 8.w(context)),
               Text(
                 'Cycle start',
-                style: MyFonts.dmSans.copyWith(
+                style: MyFonts.playfairDisplay.copyWith(
                   color: LightThemeColors.darkBrown,
                   fontSize: 24.sp(context),
-                  fontWeight: FontWeight.w800,
-                ),
+                  fontWeight: FontWeight.w600,
+                ), 
               ),
             ],
           ),

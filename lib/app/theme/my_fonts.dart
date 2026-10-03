@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
 
 class MyFonts {
-  static TextStyle get manrope => GoogleFonts.manrope();
-  static TextStyle get dmSans => GoogleFonts.dmSans();
-  static TextStyle get instrumentSerif => GoogleFonts.instrumentSerif();
-  static TextStyle get playfairDisplay => GoogleFonts.playfairDisplay();
-  static TextStyle get inter => GoogleFonts.inter();
+  static const String manropeFamily = 'Manrope';
+  static const String dmSansFamily = 'DMSans';
+  static const String instrumentSerifFamily = 'InstrumentSerif';
+  static const String playfairDisplayFamily = 'PlayfairDisplay';
+
+  static TextStyle get manrope => const TextStyle(fontFamily: manropeFamily);
+  static TextStyle get dmSans => const TextStyle(fontFamily: dmSansFamily);
+  static TextStyle get instrumentSerif =>
+      const TextStyle(fontFamily: instrumentSerifFamily);
+  static TextStyle get playfairDisplay =>
+      const TextStyle(fontFamily: playfairDisplayFamily);
+  static TextStyle get inter => dmSans;
 
   static TextStyle get appTextStyle => inter;
 
-  static String get appFontFamily => appTextStyle.fontFamily ?? 'Inter';
+  static String get appFontFamily => dmSansFamily;
 
   static TextStyle get displayTextStyle => instrumentSerif;
   static TextStyle get bodyTextStyle => dmSans;

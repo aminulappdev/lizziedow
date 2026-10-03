@@ -44,22 +44,34 @@ class _NewNoteSheetState extends State<NewNoteSheet> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'New Entry',
+                'Add Note',
                 style: MyFonts.dmSans.copyWith(
                   color: LightThemeColors.darkBrown,
                   fontSize: 24.sp(context),
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              SizedBox(height: 22.h(context)),
+              SizedBox(height: 10.h(context)),
+              Text(
+                'Capture your thoughts and feelings',
+                textAlign: TextAlign.center,
+                style: MyFonts.dmSans.copyWith(
+                  color: const Color(0xFF8F837A),
+                  fontSize: 10.sp(context),
+                  fontWeight: FontWeight.w700,
+                  height: 1.2,
+                ),
+              ),
+              SizedBox(height: 24.h(context)),
               _NoteSheetTextField(
                 controller: _titleController,
-                hintText: 'Write note title',
+                hintText: 'Enter Topic Title',
               ),
               SizedBox(height: 14.h(context)),
               _NoteSheetTextField(
                 controller: _tagsController,
-                hintText: 'Tags',
+                hintText: 'Write description here....',
+                maxLines: 6,
               ),
               SizedBox(height: 18.h(context)),
               SizedBox(
@@ -76,7 +88,7 @@ class _NewNoteSheetState extends State<NewNoteSheet> {
                     ),
                   ),
                   child: Text(
-                    'Save Note',
+                    'Add Note',
                     style: MyFonts.dmSans.copyWith(
                       fontSize: 13.sp(context),
                       fontWeight: FontWeight.w800,
@@ -133,15 +145,18 @@ class _NoteSheetTextField extends StatelessWidget {
   const _NoteSheetTextField({
     required this.controller,
     required this.hintText,
+    this.maxLines = 1,
   });
 
   final TextEditingController controller;
   final String hintText;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      maxLines: maxLines,
       style: MyFonts.dmSans.copyWith(
         color: LightThemeColors.darkBrown,
         fontSize: 12.sp(context),

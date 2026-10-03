@@ -10,17 +10,17 @@ class HomeAgendaTile extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.subtitle,
-    required this.details,  
+    required this.details,   
     this.onViewAll,
   });
 
   static const Color _textColor = Color(0xFF332A25);
-  static const Color _mutedColor = Color(0xFF776B62);
+  static const Color _mutedColor = Color(0xFF776B62); 
 
-  final String icon; 
+  final String icon;  
   final String title;
   final String subtitle; 
-  final List<HomeAgendaDetail> details;
+  final List<HomeAgendaDetail> details; 
   final VoidCallback? onViewAll;
 
   @override

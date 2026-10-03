@@ -50,7 +50,7 @@ class _PlannerJournalBottomSheetState extends State<PlannerJournalBottomSheet> {
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              SizedBox(height: 8.h(context)),
+              SizedBox(height: 8.h(context)), 
               Text(
                 'Capture your thoughts and feelings',
                 textAlign: TextAlign.center,

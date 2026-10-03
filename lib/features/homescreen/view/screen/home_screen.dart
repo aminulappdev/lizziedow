@@ -1,4 +1,3 @@
-import 'package:crash_safe_image/crash_safe_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lizziedow/app/theme/my_fonts.dart';
 import 'package:lizziedow/app/utils/app_responsive.dart';
@@ -10,7 +9,7 @@ import 'package:lizziedow/features/homescreen/view/widgets/home_mood_button.dart
 import 'package:lizziedow/gen/assets.gen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key}); 
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -19,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   static const Color _textColor = Color(0xFF332A25);
   static const Color _mutedColor = Color(0xFF776B62);
-
+  
   final List<HomeMoodItem> _moods = [
     HomeMoodItem(label: 'Happy', icon: Assets.images.moodHappy.keyName),
     HomeMoodItem(label: 'Calm', icon: Assets.images.moodClam.keyName),
@@ -33,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return ListView(
       padding: EdgeInsets.fromLTRB(
         20.w(context),
-        10.h(context),
+        20.h(context),
         20.w(context),
         22.h(context),
       ),
@@ -52,12 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(width: 10.h(context)),
-              CrashSafeImage(
-                Assets.images.heart02.keyName,
-                width: 30.w(context),
-                height: 30.h(context),
-              ),
+              // SizedBox(width: 10.h(context)),
+              // CrashSafeImage(
+              //   Assets.images.heart02.keyName,
+              //   width: 30.w(context),
+              //   height: 30.h(context),
+              // ),
             ],
           ),
         ),
@@ -66,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
           child: Text(
-            '"Believe In The Power Of Your Body, The Wisdom Of Your Heart,\nAnd The Resilience Of Your Spirit."',
+            '"Believe in the power of your body, the wisdom of your heart,\nand the resilience of your spirit."',
             textAlign: TextAlign.center,
             style: MyFonts.playfairDisplay.copyWith(
               color: const Color(0xFF5D514B),
@@ -80,10 +79,10 @@ class _HomeScreenState extends State<HomeScreen> {
         const HomeCycleStatus(),
         SizedBox(height: 38.h(context)),
         Row(
-          children: [
+          children: [ 
             Expanded(
               child: Text(
-                'How Are You Feeling Today?',
+                'How are you feeling today?',
                 style: MyFonts.playfairDisplay.copyWith(
                   color: _textColor,
                   fontSize: 14.sp(context),

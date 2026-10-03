@@ -13,14 +13,14 @@ class LoginDesignLayer extends StatelessWidget {
   }); 
 
   final String title;
-  final String subtitle;
+  final String subtitle; 
   final double? titleTopSpacing;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 50.h(context)),
+        SizedBox(height: 40.h(context)),
         Center(
           child: CrashSafeImage(
             Assets.images.logo.keyName,

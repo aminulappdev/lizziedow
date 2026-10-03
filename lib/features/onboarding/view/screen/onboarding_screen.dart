@@ -29,7 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       number: '01',
       title: 'Set up your cycle',
       description:
-          'Enter baseline dates, and medication schedule. Fertility Sisterhood builds your personalised timeline.',
+          'Enter baseline levels, and medication schedule. Fertility Sisterhood builds your personalised timeline.',
     ),
     OnboardingItem(
       number: '02',
